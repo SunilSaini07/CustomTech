@@ -1,0 +1,373 @@
+/* hero floating title */
+@keyframes heroFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+.animate-heroFloat {
+  animation: heroFloat 6s ease-in-out infinite;
+}
+
+/* floating particles */
+@keyframes heroParticleFloat {
+  0% { transform: translateY(0px) translateX(0px) scale(1); opacity: 0.8; }
+  50% { transform: translateY(-25px) translateX(10px) scale(1.2); opacity: 1; }
+  100% { transform: translateY(15px) translateX(-10px) scale(0.9); opacity: 0.7; }
+}
+
+.heroParticle {
+  animation: heroParticleFloat linear infinite;
+}
+
+
+
+
+
+/* Stagger fade reveal */
+.revealParent .revealItem {
+  opacity: 0;
+  transform: translateY(105px);
+  animation: textReveal 3s ease forwards;
+}
+.revealParent .revealItem:nth-child(1) { animation-delay: 0.2s; }
+.revealParent .revealItem:nth-child(2) { animation-delay: 0.45s; }
+.revealParent .revealItem:nth-child(3) { animation-delay: 0.7s; }
+
+/* Footer text fade */
+.fadeInSlow {
+  opacity: 0;
+  animation: fadeIn 1.4s ease forwards 1s;
+}
+
+/* Icon animations (4 different effects) */
+.iconAnim0 { animation: iconFloat 4s ease-in-out infinite; }
+.iconAnim1 { animation: iconPulse 2s ease-in-out infinite; }
+.iconAnim2 { animation: iconSpin 6s linear infinite; transform-origin: center; }
+.iconAnim3 { animation: iconWave 3s ease-in-out infinite; }
+
+/* Keyframes */
+@keyframes textReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+@keyframes iconFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes iconPulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+@keyframes iconSpin {
+  100% { transform: rotate(360deg); }
+}
+@keyframes iconWave {
+  0%,100% { transform: rotate(0deg); }
+  50% { transform: rotate(8deg); }
+}
+
+
+
+
+
+/* Floating slow theme-shifting background */
+.themeBgShift {
+  background: linear-gradient(135deg, #ecfeff, #f5f3ff);
+  background-size: 200% 200%;
+  animation: themeShift 14s ease-in-out infinite alternate;
+}
+@keyframes themeShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 90% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Scroll reveal for cards */
+.industryCard {
+  animation: cardReveal 0.8s cubic-bezier(.2,.9,.3,1) forwards;
+}
+@keyframes cardReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Title fade-up stagger h2 */
+.fadeUpStagger {
+  animation: fadeTitle .9s ease forwards;
+  opacity: 0;
+  transform: translateY(16px);
+}
+@keyframes fadeTitle {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Icon glow + soft bounce */
+.iconPulse {
+  animation: pulseIcon 2.4s ease-in-out infinite;
+}
+@keyframes pulseIcon {
+  0% { transform: scale(1); filter: drop-shadow(0 0 0px rgba(56,189,248,0)); }
+  50% { transform: scale(1.12); filter: drop-shadow(0 0 8px rgba(139,92,246,0.6)); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 0px rgba(56,189,248,0)); }
+}
+
+
+/* Background subtle animated gradient */
+.animated-bg {
+  animation: bgShift 8s infinite alternate ease-in-out;
+}
+@keyframes bgShift {
+  0% { background-color: #f9fafb; }
+  50% { background-color: #ecfeff; }
+  100% { background-color: #f9fafb; }
+}
+
+/* Card floating animation */
+.service-card {
+  animation: floatCard 6s infinite ease-in-out;
+  transition: transform .4s, box-shadow .4s;
+}
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.service-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  border-color: #06b6d4;
+  box-shadow: 0 8px 25px rgba(0, 200, 255, 0.25);
+}
+
+/* Icon pulsing animation */
+.icon-animate {
+  animation: iconPulse 2.5s infinite ease-in-out;
+}
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); opacity: .9; }
+  50% { transform: scale(1.18); opacity: 1; }
+}
+
+/* Fade on scroll */
+.fade-up {
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeUp 1s forwards ease-in-out;
+}
+.fade-up.delay-200 {
+  animation-delay: .2s;
+}
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+
+
+/* Reveal animation on scroll */
+.solution-card {
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
+  filter: blur(8px);
+  transition: opacity .8s ease-out, transform .8s ease-out, filter .8s ease-out, box-shadow .4s ease-out;
+}
+
+/* When visible on scroll */
+.solution-card.visible {
+  opacity: 1;
+  transform: translateY(0px) scale(1);
+  filter: blur(0px);
+}
+
+/* Hover effects */
+.solution-card:hover {
+  border-color: rgb(168 85 247 / 0.8);
+  box-shadow: 0px 10px 30px rgba(168, 85, 247, .25);
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* slow pulse for icon */
+@keyframes pulse-slow {
+  0%, 100% { transform: scale(1); opacity: .85; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+
+/* Base reveal animation state */
+.solution-card {
+  opacity: 0;
+  filter: blur(10px);
+  transition: all .9s ease-out;
+  position: relative;
+}
+
+/* Stagger animations left/right */
+.solution-card[data-direction="left"] {
+  transform: translateX(-40px);
+}
+.solution-card[data-direction="right"] {
+  transform: translateX(40px);
+}
+
+/* Visible reveal */
+.solution-card.visible {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateX(0);
+}
+
+/* A. Soft glowing animated border */
+.solution-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(130deg, rgba(6,182,212,0.6), rgba(168,85,247,0.6), rgba(236,72,153,0.6));
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  animation: borderGlow 4s linear infinite;
+  opacity: .5;
+}
+
+@keyframes borderGlow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+/* B. Smooth floating parallax motion */
+.floating-card {
+  animation: floatCard 6s ease-in-out infinite alternate;
+}
+@keyframes floatCard {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-10px); }
+}
+
+/* Hover Enhancements */
+.solution-card:hover {
+  transform: scale(1.02) translateY(-5px);
+  box-shadow: 0 12px 30px rgba(168, 85, 247, 0.25);
+  transition: all .4s ease-out;
+}
+
+/* Icon slow pulse */
+@keyframes pulse-slow {
+  0%, 100% { transform: scale(1); opacity: .85; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 2.8s ease-in-out infinite;
+}
+
+
+
+
+/* ===== Text Reveal ===== */
+.blur-reveal {
+  opacity: 0;
+  filter: blur(14px);
+  transform: translateY(22px);
+  animation: revealText 1s ease-out forwards;
+}
+.blur-reveal.delay-150 { animation-delay: .15s; }
+
+@keyframes revealText {
+  to { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+/* CTA fade */
+.fade-up-cta {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUpCTA 1.2s ease-out forwards;
+}
+@keyframes fadeUpCTA {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* BG breathing glow */
+@keyframes bgGlow {
+  0% { filter: hue-rotate(0deg) blur(40px); }
+  100% { filter: hue-rotate(360deg) blur(40px); }
+}
+.animate-bgGlow { animation: bgGlow 18s linear infinite; }
+
+/* ===== Button Hover & Pulse ===== */
+.cta-btn {
+  transition: transform .35s ease-out, box-shadow .4s ease-out;
+  animation: pulseBTN 2.4s ease-in-out infinite alternate;
+  position: relative;
+}
+.cta-btn:hover {
+  transform: scale(1.07) translateY(-2px);
+  box-shadow: 0 0 26px rgba(6,182,212,0.5), 0 0 40px rgba(168,85,247,0.4);
+}
+@keyframes pulseBTN {
+  from { transform: scale(1); }
+  to { transform: scale(1.03); }
+}
+
+/* ===== Spark Particle Burst ===== */
+.particle-btn .particles {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+}
+.particle-btn:hover .particles::before,
+/* .particle-btn:hover .particles::after {
+  content: "";
+  position: absolute;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: white;
+  opacity: .8;
+  animation: particleBurst .7s ease-out forwards;
+} */
+.particle-btn:hover .particles::before {
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.particle-btn:hover .particles::after {
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(1.4);
+}
+
+/* @keyframes particleBurst {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(14);
+  }
+} */
+
+/* ===== LIGHT-TRACKING SPOTLIGHT ===== */
+.particle-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,.35), transparent 60%);
+  opacity: 0;
+  transition: opacity .2s ease-out;
+}
+.particle-btn:hover::after { opacity: 1; }
+
+/* JS pointer tracking (only CSS-ready; needs JS below) */
+
+
+
+
+

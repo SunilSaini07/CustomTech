@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+
+@keyframes premiumBubble {
+  0% { transform: translateY(0) scale(0.9); opacity: 0.2; }
+  50% { transform: translateY(-120px) scale(1.3); opacity: 0.4; }
+  100% { transform: translateY(-240px) scale(0.9); opacity: 0.15; }
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-18px); }
+}
+
+.fadeReveal {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease forwards;
+}
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.premiumCard {
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+.premiumCard:hover {
+  transform: translateY(-6px) rotateX(2deg) rotateY(-2deg);
+  box-shadow: 0px 12px 40px rgba(0,0,0,0.12);
+}
+
+
+
+/* Fade + slight slide from bottom */
+.fade-footer {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeFooter 1.1s ease-out forwards;
+}
+@keyframes fadeFooter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Link glow + underline slide */
+.footer-link {
+  position: relative;
+  transition: color .35s ease;
+}
+.footer-link:hover {
+  color: rgb(6,182,212);
+}
+.footer-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(to right, #06b6d4, #a855f7);
+  transition: width .35s ease;
+}
+.footer-link:hover::after {
+  width: 60%;
+}
+
+/* Background shimmer/glow wave */
+.footer-glow {
+  background: radial-gradient(circle at 50% 150%, rgba(6,182,212,0.18), transparent 60%),
+              radial-gradient(circle at 50% -80%, rgba(168,85,247,0.18), transparent 60%);
+  animation: footerGlowAnim 16s linear infinite alternate;
+  filter: blur(35px);
+}
+@keyframes footerGlowAnim {
+  0% {
+    transform: translateX(-15px) translateY(0);
+  }
+  100% {
+    transform: translateX(15px) translateY(10px);
+  }
+}
+
+/* Slight breathing effect */
+.footer-animate {
+  animation: footerPulse 7s ease-in-out infinite alternate;
+}
+@keyframes footerPulse {
+  0% { background-color: #fafafa; }
+  100% { background-color: #fdfdfd; }
+}
+
+/* Floating subtle background blobs */
+.blob-1, .blob-2 {
+  animation: float 8s ease-in-out infinite alternate;
+}
+@keyframes float {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(25px) scale(1.05); }
+}
+
+/* Animated underline on heading */
+.heading-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(to right, #06b6d4, #a855f7);
+  border-radius: 2px;
+  transition: width 10s ease-out;
+}
+.heading-underline.in-view::after {
+  width: 100%;
+}
+
+/* Moving gradient border for button */
+.cta-border {
+  position: relative;
+}
+.flow-border {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(120deg, #06b6d4, #a855f7, #06b6d4);
+  background-size: 200% 200%;
+  animation: flowBorder 4s linear infinite;
+  opacity: 0.65;
+  z-index: 0;
+}
+@keyframes flowBorder {
+  to { background-position: 200% center; }
+}
+
+/* Scroll reveal trigger */
+.reveal-active {
+  opacity: 1 !important;
+  transform: translateY(10) !important;
+}
+
+
+
+/* Scroll Reveal */
+.serviceCard {
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+
+/* Particle Sparkles */
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255,255,255,0.8);
+  animation: sparkleFloat 3s linear infinite;
+}
+
+@keyframes sparkleFloat {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-40px) scale(0.4); opacity: 0; }
+}
+
+/* Magnetic Hover Buttons */
+.magnetic-btn {
+  position: relative;
+  display: inline-block;
+  transition: transform 0.2s ease-out;
+}
+
+
+/* Smooth hover for cards */
+.serviceCard {
+  transition: transform 20s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.8s ease-out, 
+              box-shadow 0.9s ease-out;
+}
+
+.serviceCard:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* Glow visible sparkles */
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, rgba(6,182,212,0.9), rgba(168,85,247,0.85));
+  border-radius: 50%;
+  box-shadow: 0 0 14px rgba(168,85,247,0.8), 0 0 22px rgba(6,182,212,0.7);
+  animation: sparkleFloat 3.5s ease-out forwards;
+  filter: blur(0.5px);
+}
+
+@keyframes sparkleFloat {
+  0%   { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-70px) scale(0.3); opacity: 0; }
+}
+
+
+/* Smooth magnetic button */
+.magnetic-btn {
+  transition: transform 0.35s cubic-bezier(.21,1.12,.37,1), 
+              box-shadow 0.35s ease;
+}
+
+.magnetic-btn:hover {
+  box-shadow: 0 10px 30px rgba(6,182,212,0.25),
+              0 14px 40px rgba(168,85,247,0.25);
+  transform: scale(1.06);
+}
+
+
+
+
+
