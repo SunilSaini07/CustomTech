@@ -87,11 +87,7 @@ const Home = () => {
   ];
 
   const solutionData = [
-    {
-      title: "CRM, HRMS & ATS Systems",
-      description:
-        "Empower teams with seamless workflow and powerful analytics.",
-    },
+    
     {
       title: "Wellness & Fitness Platforms",
       description:
@@ -111,12 +107,7 @@ const Home = () => {
       title: "Custom Business Process Automation",
       description:
         "Digitize core operations for peak efficiency and deep insight.",
-    },
-    {
-      title: "Fitness Platforms",
-      description:
-        "Encourage engagement, tracking, and personalized lifestyle management.",
-    },
+    }
   ];
   // --- END Section Data ---
 

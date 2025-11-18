@@ -33,12 +33,6 @@ const Solutions = () => {
 
   const solutions = [
     {
-      title: "CRM, HRMS & ATS Systems",
-      desc: "We create connected ecosystems that unify your operations, streamline workflows, and empower data-driven HR and recruitment decisions.",
-      img: "https://cdn-icons-png.flaticon.com/512/1077/1077012.png",
-      bg: "from-blue-50 to-white",
-    },
-    {
       title: "Wellness & Fitness Platforms",
       desc: "Design engaging wellness apps that combine activity tracking, gamification, and community engagement.",
       img: "https://cdn-icons-png.flaticon.com/512/2966/2966327.png",
