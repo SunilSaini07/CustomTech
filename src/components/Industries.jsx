@@ -42,7 +42,7 @@ const Industries = () => {
       description:
         "We design high-converting commerce experiences that blend performance, analytics and modern engagement.",
       solutions: [
-        "Shopify, WooCommerce & Custom Stores",
+        "Advanced E-Commerce & Custom Stores",
         "AI Product Search & Recommendation Engine",
         "Secure Payment Gateways",
         "Inventory, Order & Subscription Management",

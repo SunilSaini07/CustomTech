@@ -59,7 +59,7 @@ const Home = () => {
       description:
         "We craft powerful eCommerce platforms that combine performance, usability, and conversion optimization.",
       solutions: [
-        "Shopify/WooCommerce Development",
+        "Advanced E-Commerce Development",
         "Product Search & Recommendations",
         "Secure Payment Integration",
       ],
