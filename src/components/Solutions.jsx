@@ -32,6 +32,7 @@ const Solutions = () => {
   const navItems = ["Home", "Industries", "Services", "Solutions", "About Us"];
 
   const solutions = [
+   
     {
       title: "Wellness & Fitness Platforms",
       desc: "Design engaging wellness apps that combine activity tracking, gamification, and community engagement.",

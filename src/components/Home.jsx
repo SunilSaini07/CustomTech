@@ -70,7 +70,7 @@ const Home = () => {
       description:
         "Specializing in B2B/B2C, Wellness, and Automation systems to streamline operations and accelerate growth across sectors.",
       solutions: [
-        "CRM, HRMS, ATS Platforms",
+        "Learning & Quiz Applications",
         "Wellness & Fitness Apps",
         "SaaS & Automation Systems",
       ],

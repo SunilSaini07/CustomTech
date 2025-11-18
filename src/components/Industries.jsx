@@ -22,21 +22,6 @@ const Industries = () => {
 
   const industryData = [
     {
-      title: "Healthcare",
-      subtitle: "Innovation and Compliance in Digital Health",
-      description:
-        "We build transformative healthcare technology — empowering hospitals, assisted living facilities, and pharmacies with systems that improve patient care and operational efficiency.",
-      solutions: [
-        "Custom EMAR Software Development",
-        "Pharmacy Management Platforms",
-        "Medicine Search & Inventory Systems",
-        "Appointment and Patient Tracking Portals",
-        "Healthcare Staff Coordination Apps",
-      ],
-      note: "All healthcare applications meet HIPAA and HL7 compliance.",
-      bg: "bg-gradient-to-r from-cyan-50 to-white",
-    },
-    {
       title: "eCommerce",
       subtitle: "Performance-Driven Digital Commerce",
       description:
@@ -50,6 +35,21 @@ const Industries = () => {
       ],
       note: "Optimized for performance, scalability and conversion.",
       bg: "bg-gradient-to-r from-purple-50 to-white",
+    },
+    {
+      title: "Healthcare",
+      subtitle: "Innovation and Compliance in Digital Health",
+      description:
+        "We build transformative healthcare technology — empowering hospitals, assisted living facilities, and pharmacies with systems that improve patient care and operational efficiency.",
+      solutions: [
+        "Custom EMAR Software Development",
+        "Pharmacy Management Platforms",
+        "Medicine Search & Inventory Systems",
+        "Appointment and Patient Tracking Portals",
+        "Healthcare Staff Coordination Apps",
+      ],
+      note: "All healthcare applications meet HIPAA and HL7 compliance.",
+      bg: "bg-gradient-to-r from-cyan-50 to-white",
     },
     {
       title: "Other Industries",
