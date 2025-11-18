@@ -1,0 +1,9 @@
+{
+    "rewrites" :[
+        { "source" : "/(.*)", "destination" : "/index.html" }
+    ],
+
+   "buildCommand": "npm install --include=dev && npm run build",
+  "outputDirectory": "dist"
+}
+

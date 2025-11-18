@@ -222,7 +222,7 @@ const About = () => {
           animate={{ backgroundPosition: ["0px 0px", "1340px 0px"] }}
           transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
           style={{
-            backgroundImage: "url('src/assets/logo.png')",
+            backgroundImage: "url('src/assets/Logo.png')",
             // backgroundSize: "cover", 
             backgroundRepeat:"no-repeat",
           }}
