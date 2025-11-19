@@ -10,6 +10,7 @@ import About from './components/Aboutus.jsx';
 import ScrollToTop from './components/ScrollToTop.jsx';
 import Layout from './components/Layout.jsx';
 import NotFoundPage from './components/NotFoundPage.jsx';
+import EcommerceService from './components/Ecommerce.jsx';
 // import { div } from 'framer-motion/client';
 
 const router = createBrowserRouter([
@@ -26,6 +27,8 @@ const router = createBrowserRouter([
   { path: "/about us",    element: <About/>,},
   { path: "/about",    element: <About/>,},
   { path: "/aboutus",    element: <About/>,},
+  { path: "/industries/ecommerce-development",    element: <EcommerceService/>,},
+  { path: "/service/ecommerce-development",    element: <EcommerceService/>,},
   { path: "*",    element: <NotFoundPage/>,},
   ],
 

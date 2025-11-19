@@ -22,7 +22,7 @@ const Industries = () => {
 
   const industryData = [
     {
-      title: "eCommerce",
+      title: " Advanced  eCommerce",
       subtitle: "Performance-Driven Digital Commerce",
       description:
         "We design high-converting commerce experiences that blend performance, analytics and modern engagement.",
@@ -35,12 +35,14 @@ const Industries = () => {
       ],
       note: "Optimized for performance, scalability and conversion.",
       bg: "bg-gradient-to-r from-purple-50 to-white",
+      route: "/industries/ecommerce-development"
+      
     },
     {
       title: "Healthcare",
       subtitle: "Innovation and Compliance in Digital Health",
       description:
-        "We build transformative healthcare technology — empowering hospitals, assisted living facilities, and pharmacies with systems that improve patient care and operational efficiency.",
+      "We build transformative healthcare technology — empowering hospitals, assisted living facilities, and pharmacies with systems that improve patient care and operational efficiency.",
       solutions: [
         "Custom EMAR Software Development",
         "Pharmacy Management Platforms",
@@ -50,12 +52,13 @@ const Industries = () => {
       ],
       note: "All healthcare applications meet HIPAA and HL7 compliance.",
       bg: "bg-gradient-to-r from-cyan-50 to-white",
+      route: "/contact"
     },
     {
       title: "Other Industries",
       subtitle: "Smart Digital Ecosystems",
       description:
-        "We bring innovation across sectors, helping businesses move from legacy systems to scalable platforms.",
+      "We bring innovation across sectors, helping businesses move from legacy systems to scalable platforms.",
       solutions: [
         "CRM, HRMS, ATS",
         "Fitness & Wellness Apps",
@@ -65,6 +68,7 @@ const Industries = () => {
       ],
       note: "Designed for security, scale and long-term adaptability.",
       bg: "bg-gradient-to-r from-blue-50 to-white",
+      route: "/contact"
     },
   ];
 
@@ -77,7 +81,7 @@ const Industries = () => {
         aria-hidden="true"
       >
         {/* Large slow floating bubbles (behind content) */}
-        {[...Array(10)].map((_, i) => (
+        {[...Array(15)].map((_, i) => (
           <span
             key={`bubble-${i}`}
             className="premiumBubble"
@@ -92,7 +96,7 @@ const Industries = () => {
         ))}
 
         {/* Small colorful particles (front of bubbles, subtle) */}
-        {[...Array(24)].map((_, i) => (
+        {[...Array(34)].map((_, i) => (
           <span
             key={`particle-${i}`}
             className="spark particle"
@@ -199,7 +203,7 @@ const Industries = () => {
                 sector achieve measurable results and long-term digital success.
               </p>
               <Link
-                to="/contact"
+                to={ind.route}
                 className="inline-block px-8 py-3 rounded-full text-white font-semibold bg-linear-to-r from-cyan-500 to-purple-600 hover:scale-105 transform transition"
               >
                 Discuss Your Project

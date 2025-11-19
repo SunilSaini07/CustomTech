@@ -222,3 +222,106 @@
 
 
 
+
+/* ---------- Hero animation keyframes & helper classes ---------- */
+
+@keyframes bgCycle {
+  0% { background-color: #f9fafb; }
+  33% { background-color: #f0f7ff; }
+  66% { background-color: #f8f5ff; }
+  100% { background-color: #f9fafb; }
+}
+.animate-bg-cycle {
+  animation: bgCycle 5s ease-in-out infinite;
+}
+
+/* Blur + fade-in (for headings/paragraphs/buttons) */
+@keyframes blurFadeIn {
+  0% { opacity: 0; filter: blur(18px); transform: translateY(20px); }
+  60% { opacity: 1; filter: blur(6px); }
+  100% { opacity: 1; filter: blur(0px); transform: translateY(0); }
+}
+.animate-blur-fade {
+  animation: blurFadeIn 900ms ease-out forwards;
+}
+
+/* Soft floating blobs (background) */
+@keyframes floatSoft {
+  0% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-18px) scale(1.02); }
+  100% { transform: translateY(0px) scale(1); }
+}
+.animate-float-soft {
+  animation: floatSoft 6s ease-in-out infinite;
+}
+
+/* small helpers (optional) */
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: fadeUpAnim 700ms cubic-bezier(.2,.9,.3,1) forwards;
+}
+@keyframes fadeUpAnim {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* fade up when scrolled into view */
+@keyframes fadeUpScroll {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.scroll-fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1.6s ease-out, transform .6s ease-out;
+}
+
+.scroll-fade-up.show {
+  animation: fadeUpScroll 1.8s ease-out forwards;
+}
+
+
+
+/* Smooth float for blobs */
+@keyframes floatSoftCTA {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+  100% { transform: translateY(0); }
+}
+
+.animate-float-soft {
+  animation: floatSoftCTA 6s ease-in-out infinite;
+}
+
+/* CTA reveal */
+.cta-animate {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(25px);
+  animation: ctaReveal 0.9s ease-out forwards;
+}
+
+@keyframes ctaReveal {
+  0% {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(25px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+/* For stagger: */
+.cta-animate[style*="animation-delay"] {
+  animation-delay: inherit;
+}

@@ -100,6 +100,7 @@ document.querySelectorAll(".magnetic-btn").forEach((btn) => {
   const navItems = ['Home', 'Industries', 'Services', 'Solutions', 'About Us'];
 
   const services = [
+    
     {
       title: 'Custom Web & Mobile App Development',
       description:
@@ -227,13 +228,12 @@ document.querySelectorAll(".magnetic-btn").forEach((btn) => {
     {/* Animated Highlight Card */}
     <div className="serviceCard opacity-0 translate-y-6 relative rounded-2xl border-cyan-300 overflow-hidden p-8 flex flex-col justify-center items-center text-center bg-linear-to-r from-cyan-500 via-purple-500 to-blue-600 text-white shadow-xl animate-gradient-move hover:scale-[1.02] transition-all duration-500">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.1),transparent_40%)]"></div>
-      <h2 className="text-3xl font-bold mb-4">Innovation in Motion</h2>
+      <h2 className="text-2xl font-bold mb-4">Advanced E-Commerce Development</h2>
       <p className="text-lg text-white/90 mb-6 max-w-sm">
-        Experience the next evolution of technology —  
-        from AI breakthroughs to immersive digital ecosystems.
+       We design high-converting commerce experiences that blend performance, analytics and modern engagement.
       </p>
       <Link
-        to="/solutions"
+        to="/service/ecommerce-development"
         className="magnetic-btn inline-block px-8 py-3 rounded-full bg-white/10 border border-white/30 backdrop-blur-md hover:bg-white/20 transition text-white font-semibold"
       >
         Explore Innovation →
