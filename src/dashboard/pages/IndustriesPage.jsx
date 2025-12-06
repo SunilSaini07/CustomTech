@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import toast from "react-hot-toast";
+import axioss from "../../axiosConfig";
 
 const IndustriesPage = () => {
   /* ================= HERO SECTION STATE ================= */
@@ -16,8 +17,8 @@ const IndustriesPage = () => {
 
   /* ================= FETCH ================= */
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/industries/hero")
+    axioss
+      .get("/api/industries/hero")
       .then((res) => {
         setHero(res.data);
         setHeroHistory([res.data]);
@@ -47,8 +48,8 @@ const IndustriesPage = () => {
   /* ================= SAVE ================= */
   const handleHeroSave = async () => {
     try {
-      const res = await axios.put(
-        `http://localhost:8080/api/industries/hero/${heroTemp.id}`,
+      const res = await axioss.put(
+        `/api/industries/hero/${heroTemp.id}`,
         heroTemp
       );
 
@@ -92,8 +93,8 @@ const IndustriesPage = () => {
   /* ================= UPDATE (PUT again) ================= */
   const handleHeroUpdate = async () => {
     try {
-      const res = await axios.put(
-        `http://localhost:8080/api/industries/hero/${hero.id}`,
+      const res = await axioss.put(
+        `/api/industries/hero/${hero.id}`,
         hero
       );
 
@@ -120,8 +121,8 @@ const IndustriesPage = () => {
 
   /* ================= FETCH ================= */
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/industries/industry")
+    axioss
+      .get("/api/industries/industry")
       .then((res) => {
         setIndustry(res.data);
         setIndHistory([res.data]);
@@ -156,8 +157,8 @@ const IndustriesPage = () => {
       const updatedList = [];
 
       for (const item of indTemp) {
-        const res = await axios.put(
-          `http://localhost:8080/api/industries/industry/${item.id}`,
+        const res = await axioss.put(
+          `/api/industries/industry/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -206,8 +207,8 @@ const IndustriesPage = () => {
       const updatedList = [];
 
       for (const item of industry) {
-        const res = await axios.put(
-          `http://localhost:8080/api/industries/industry/${item.id}`,
+        const res = await axioss.put(
+          `/api/industries/industry/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -236,8 +237,8 @@ const IndustriesPage = () => {
 
   /* ================= FETCH DATA ================= */
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/industries/card")
+    axioss
+      .get("/api/industries/card")
       .then((res) => {
         setVisualCards(res.data);
         setVcHistory([res.data]);
@@ -271,8 +272,8 @@ const IndustriesPage = () => {
       const updatedList = [];
 
       for (const card of vcTemp) {
-        const res = await axios.put(
-          `http://localhost:8080/api/industries/card/${card.id}`,
+        const res = await axioss.put(
+          `/api/industries/card/${card.id}`,
           card
         );
         updatedList.push(res.data);
@@ -320,8 +321,8 @@ const IndustriesPage = () => {
       const updatedList = [];
 
       for (const card of visualCards) {
-        const res = await axios.put(
-          `http://localhost:8080/api/industries/card/${card.id}`,
+        const res = await axioss.put(
+          `/api/industries/card/${card.id}`,
           card
         );
         updatedList.push(res.data);
@@ -351,8 +352,8 @@ const IndustriesPage = () => {
 
   /* ================= FETCH CTA DATA ================= */
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/industries/cta")
+    axioss
+      .get("/api/industries/cta")
       .then((res) => {
         setCtaData(res.data);
         setCtaHistory([res.data]);
@@ -383,8 +384,8 @@ const IndustriesPage = () => {
     try {
       const updatedList = [];
       for (const item of ctaTemp) {
-        const res = await axios.put(
-          `http://localhost:8080/api/industries/cta/${item.id}`,
+        const res = await axioss.put(
+          `/api/industries/cta/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -425,8 +426,8 @@ const IndustriesPage = () => {
     try {
       const updatedList = [];
       for (const item of ctaData) {
-        const res = await axios.put(
-          `http://localhost:8080/api/industries/cta/${item.id}`,
+        const res = await axioss.put(
+          `/api/industries/cta/${item.id}`,
           item
         );
         updatedList.push(res.data);

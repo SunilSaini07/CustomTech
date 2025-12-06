@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import toast from "react-hot-toast";
+import axioss from "../../axiosConfig";
 
 function HomePage() {
   /* ================= HERO SECTION STATE ================= */
@@ -68,8 +69,8 @@ function HomePage() {
   /* ================= FETCH DATA ================= */
   useEffect(() => {
     //HERO DATA FETCH
-    axios
-      .get("http://localhost:8080/api/home/hero")
+    axioss
+      .get("/api/home/hero")
       .then((res) => {
         setHero(res.data);
         setHistory([res.data]);
@@ -81,8 +82,8 @@ function HomePage() {
       });
 
     //ABOUT DATA FETCH
-    axios
-      .get("http://localhost:8080/api/home/about")
+    axioss
+      .get("/api/home/about")
       .then((res) => {
         setAbout(res.data);
         setAboutHistory([res.data]);
@@ -94,8 +95,8 @@ function HomePage() {
       });
 
     //INDUSTRIES DATA FETCH
-    axios
-      .get("http://localhost:8080/api/home/industries")
+    axioss
+      .get("/api/home/industries")
       .then((res) => {
         setIndustries(res.data);
         setIndHistory([res.data]);
@@ -103,8 +104,8 @@ function HomePage() {
       .catch(() => toast.error("Failed to load Industries"));
 
     //SERVICES DATA FETCH
-    axios
-      .get("http://localhost:8080/api/home/services")
+    axioss
+      .get("/api/home/services")
       .then((res) => {
         setServices(res.data);
         setServiceHistory([res.data]);
@@ -116,8 +117,8 @@ function HomePage() {
       });
 
     //SOLUTIONS DATA FETCH
-    axios
-      .get("http://localhost:8080/api/home/solutions")
+    axioss
+      .get("/api/home/solutions")
       .then((res) => {
         setSolutions(res.data);
         setSolHistory([res.data]);
@@ -129,8 +130,8 @@ function HomePage() {
       });
 
     //CTA DATA FETCH
-    axios
-      .get("http://localhost:8080/api/home/cta")
+    axioss
+      .get("/api/home/cta")
       .then((res) => {
         setCta(res.data);
         setCtaHistory([res.data]);
@@ -153,8 +154,8 @@ function HomePage() {
   };
 
   const handleSave = () => {
-    axios
-      .put("http://localhost:8080/api/home/hero", temp)
+    axioss
+      .put("/api/home/hero", temp)
       .then((res) => {
         setHero(res.data);
         setEditMode(false);
@@ -191,8 +192,8 @@ function HomePage() {
   };
 
   const handleUpdate = () => {
-    axios
-      .put("http://localhost:8080/api/home/hero", hero)
+    axioss
+      .put("/api/home/hero", hero)
       .then((res) => {
         setHero(res.data);
         setHistory([res.data]);
@@ -222,8 +223,8 @@ function HomePage() {
   };
 
   const handleAboutSave = () => {
-    axios
-      .put("http://localhost:8080/api/home/about", aboutTemp)
+    axioss
+      .put("/api/home/about", aboutTemp)
       .then((res) => {
         setAbout(res.data);
         setAboutEdit(false);
@@ -260,8 +261,8 @@ function HomePage() {
   };
 
   const handleAboutUpdate = () => {
-    axios
-      .put("http://localhost:8080/api/home/about", about)
+    axioss
+      .put("/api/home/about", about)
       .then((res) => {
         setAbout(res.data);
         setAboutHistory([res.data]);
@@ -295,8 +296,8 @@ function HomePage() {
       for (let i = 0; i < updated.length; i++) {
         const row = updated[i];
 
-        const res = await axios.put(
-          `http://localhost:8080/api/home/industries/${row.id}`,
+        const res = await axioss.put(
+          `/api/home/industries/${row.id}`,
           row
         );
 
@@ -345,8 +346,8 @@ function HomePage() {
       const updatedList = [];
 
       for (const item of industries) {
-        const res = await axios.put(
-          `http://localhost:8080/api/home/industries/${item.id}`,
+        const res = await axioss.put(
+          `/api/home/industries/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -381,8 +382,8 @@ function HomePage() {
     try {
       const updatedList = [];
       for (const item of serviceTemp) {
-        const res = await axios.put(
-          `http://localhost:8080/api/home/services/${item.id}`,
+        const res = await axioss.put(
+          `/api/home/services/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -427,8 +428,8 @@ function HomePage() {
     try {
       const updatedList = [];
       for (const item of services) {
-        const res = await axios.put(
-          `http://localhost:8080/api/home/services/${item.id}`,
+        const res = await axioss.put(
+          `/api/home/services/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -465,8 +466,8 @@ function HomePage() {
       const updatedList = [];
 
       for (const item of solTemp) {
-        const res = await axios.put(
-          `http://localhost:8080/api/home/solutions/${item.id}`,
+        const res = await axioss.put(
+          `/api/home/solutions/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -512,8 +513,8 @@ function HomePage() {
       const updatedList = [];
 
       for (const item of solutions) {
-        const res = await axios.put(
-          `http://localhost:8080/api/home/solutions/${item.id}`,
+        const res = await axioss.put(
+          `/api/home/solutions/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -544,8 +545,8 @@ function HomePage() {
   };
 
   const handleCtaSave = () => {
-    axios
-      .put(`http://localhost:8080/api/home/cta/${ctaTemp.id}`, ctaTemp)
+    axioss
+      .put(`/api/home/cta/${ctaTemp.id}`, ctaTemp)
       .then((res) => {
         setCta(res.data);
         setCtaEdit(false);
@@ -585,8 +586,8 @@ function HomePage() {
   };
 
   const handleCtaUpdate = () => {
-    axios
-      .put(`http://localhost:8080/api/home/cta/${ctaTemp.id}`, cta)
+    axioss
+      .put(`/api/home/cta/${ctaTemp.id}`, cta)
       .then((res) => {
         setCta(res.data);
         setCtaHistory([res.data]);

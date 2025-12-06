@@ -101,24 +101,24 @@ const About = () => {
 
   //Fetch data from backend
   useEffect(() => {
-    fetch("http://localhost:8080/api/about/hero")
+    fetch("https://customtectlab-backend.up.railway.app/api/about/hero")
       .then((res) => res.json())
       .then((data) => setAboutHero(data))
       .catch((err) => console.error("Failed to fetch About Hero:", err));
 
-    fetch("http://localhost:8080/api/about/mission")
+    fetch("https://customtectlab-backend.up.railway.app/api/about/mission")
       .then((res) => res.json())
       .then((data) => setMission(data))
       .catch((err) => console.error("Failed to fetch Mission:", err));
 
-    fetch("http://localhost:8080/api/about/values")
+    fetch("https://customtectlab-backend.up.railway.app/api/about/values")
       .then((res) => res.json())
       .then((data) => {
         if (data) setValues(data);
       })
       .catch((err) => console.error("Failed to fetch Values section:", err));
 
-    fetch("http://localhost:8080/api/about/cards")
+    fetch("https://customtectlab-backend.up.railway.app/api/about/cards")
       .then((res) => res.json())
       .then((data) => {
         setValueCards(data);
@@ -127,7 +127,7 @@ const About = () => {
         console.error("Failed to fetch About Values Cards:", err)
       );
 
-    fetch("http://localhost:8080/api/about/cta")
+    fetch("https://customtectlab-backend.up.railway.app/api/about/cta")
       .then((res) => res.json())
       .then((data) => setAboutCTA(data[0]))
       .catch((err) => console.error("Failed to fetch About CTA:", err));

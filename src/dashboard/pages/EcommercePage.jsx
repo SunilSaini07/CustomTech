@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import toast from "react-hot-toast";
+import axioss from "../../axiosConfig";
 
 const EcommercePage = () => {
   // ================= ECOMMERCE HERO STATE =================
@@ -16,8 +17,8 @@ const EcommercePage = () => {
 
   // ================= FETCH DATA =================
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/ecommerce/hero")
+    axioss
+      .get("/api/ecommerce/hero")
       .then((res) => {
         setEcomHero(res.data);
         setEcomHeroHistory([res.data]);
@@ -46,8 +47,8 @@ const EcommercePage = () => {
       const updatedList = [];
 
       for (const item of ecomHeroTemp) {
-        const res = await axios.put(
-          `http://localhost:8080/api/ecommerce/hero/${item.id}`,
+        const res = await axioss.put(
+          `/api/ecommerce/hero/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -94,8 +95,8 @@ const EcommercePage = () => {
       const updatedList = [];
 
       for (const item of ecomHero) {
-        const res = await axios.put(
-          `http://localhost:8080/api/ecommerce/hero/${item.id}`,
+        const res = await axioss.put(
+          `/api/ecommerce/hero/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -124,8 +125,8 @@ const EcommercePage = () => {
 
   // ================= FETCH DATA =================
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/ecommerce/core")
+    axioss
+      .get("/api/ecommerce/core")
       .then((res) => {
         setCoreFeatures(res.data);
         setCoreFeaturesHistory([res.data]);
@@ -154,8 +155,8 @@ const EcommercePage = () => {
       const updatedList = [];
 
       for (const item of coreFeaturesTemp) {
-        const res = await axios.put(
-          `http://localhost:8080/api/ecommerce/core/${item.id}`,
+        const res = await axioss.put(
+          `/api/ecommerce/core/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -202,8 +203,8 @@ const EcommercePage = () => {
       const updatedList = [];
 
       for (const item of coreFeatures) {
-        const res = await axios.put(
-          `http://localhost:8080/api/ecommerce/core/${item.id}`,
+        const res = await axioss.put(
+          `/api/ecommerce/core/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -233,8 +234,8 @@ const EcommercePage = () => {
 
   // ================= FETCH DATA =================
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/ecommerce/modules")
+    axioss
+      .get("/api/ecommerce/modules")
       .then((res) => {
         setAdvancedModules(res.data);
         setAdvancedModulesHistory([res.data]);
@@ -262,8 +263,8 @@ const EcommercePage = () => {
     try {
       const updatedList = [];
       for (const item of advancedModulesTemp) {
-        const res = await axios.put(
-          `http://localhost:8080/api/ecommerce/modules/${item.id}`,
+        const res = await axioss.put(
+          `/api/ecommerce/modules/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -308,8 +309,8 @@ const EcommercePage = () => {
     try {
       const updatedList = [];
       for (const item of advancedModules) {
-        const res = await axios.put(
-          `http://localhost:8080/api/ecommerce/modules/${item.id}`,
+        const res = await axioss.put(
+          `/api/ecommerce/modules/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -337,8 +338,8 @@ const EcommercePage = () => {
 
   // ================= FETCH DATA =================
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/ecommerce/cta")
+    axioss
+      .get("/api/ecommerce/cta")
       .then((res) => {
         setCtaSection(res.data[0]);
         setCtaHistory([res.data[0]]);
@@ -365,8 +366,8 @@ const EcommercePage = () => {
   // ================= SAVE =================
   const handleCtaSave = async () => {
     try {
-      const res = await axios.put(
-        `http://localhost:8080/api/ecommerce/cta/${ctaSection.id}`,
+      const res = await axioss.put(
+        `/api/ecommerce/cta/${ctaSection.id}`,
         ctaSectionTemp
       );
       setCtaSection(res.data);
@@ -407,8 +408,8 @@ const EcommercePage = () => {
   // ================= UPDATE =================
   const handleCtaUpdate = async () => {
     try {
-      const res = await axios.put(
-        `http://localhost:8080/api/ecommerce/cta/${ctaSection.id}`,
+      const res = await axioss.put(
+        `/api/ecommerce/cta/${ctaSection.id}`,
         ctaSection
       );
       setCtaSection(res.data);

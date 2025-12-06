@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+// import axioss from "axioss";
 import toast from "react-hot-toast";
+import axioss from "../../axiosConfig";
 
 const ServicesPage = () => {
   // ================= STATE =================
@@ -16,8 +17,8 @@ const ServicesPage = () => {
 
   // ================= FETCH =================
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/services/hero")
+    axioss
+      .get("/api/services/hero")
       .then((res) => {
         setServiceHero(res.data[0]);
         setServiceHeroHistory([res.data[0]]);
@@ -44,8 +45,8 @@ const ServicesPage = () => {
   // ================= SAVE =================
   const handleServiceHeroSave = async () => {
     try {
-      const res = await axios.put(
-        `http://localhost:8080/api/services/hero/${serviceHero.id}`,
+      const res = await axioss.put(
+        `/api/services/hero/${serviceHero.id}`,
         serviceHeroTemp
       );
 
@@ -88,8 +89,8 @@ const ServicesPage = () => {
   // ================= UPDATE =================
   const handleServiceHeroUpdate = async () => {
     try {
-      const res = await axios.put(
-        `http://localhost:8080/api/services/hero/${serviceHero.id}`,
+      const res = await axioss.put(
+        `/api/services/hero/${serviceHero.id}`,
         serviceHero
       );
 
@@ -114,8 +115,8 @@ const ServicesPage = () => {
 
   // FETCH
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/services/cards")
+    axioss
+      .get("/api/services/cards")
       .then((res) => {
         setServiceCards(res.data);
         setScHistory([res.data]);
@@ -143,8 +144,8 @@ const ServicesPage = () => {
     try {
       const updatedList = [];
       for (const item of scTemp) {
-        const res = await axios.put(
-          `http://localhost:8080/api/services/cards/${item.id}`,
+        const res = await axioss.put(
+          `/api/services/cards/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -192,8 +193,8 @@ const ServicesPage = () => {
       const updatedList = [];
 
       for (const item of serviceCards) {
-        const res = await axios.put(
-          `http://localhost:8080/api/services/cards/${item.id}`,
+        const res = await axioss.put(
+          `/api/services/cards/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -225,7 +226,7 @@ const ServicesPage = () => {
   useEffect(() => {
     const fetchCta = async () => {
       try {
-        const res = await axios.get("http://localhost:8080/api/services/cta");
+        const res = await axioss.get("/api/services/cta");
         setCta(res.data);
         setCtaHistory([res.data]);
       } catch (error) {
@@ -260,8 +261,8 @@ const ServicesPage = () => {
   // ================= SAVE EDIT  =================
   const handleCtaSave = async () => {
     try {
-      const res = await axios.put(
-        `http://localhost:8080/api/services/cta/${ctaTemp.id}`,
+      const res = await axioss.put(
+        `/api/services/cta/${ctaTemp.id}`,
         ctaTemp
       );
 
@@ -304,8 +305,8 @@ const ServicesPage = () => {
   // ================= UPDATE TO API =================
   const handleCtaUpdate = async () => {
     try {
-      const res = await axios.put(
-        `http://localhost:8080/api/services/cta/${cta.id}`,
+      const res = await axioss.put(
+        `/api/services/cta/${cta.id}`,
         cta
       );
 
@@ -323,7 +324,6 @@ const ServicesPage = () => {
 
   return (
     <div className="p-10">
-      <h1 className="text-3xl font-bold mb-6">Service Page :</h1>
       {/* ================= SERVICE PAGE HERO SECTION ================= */}
       <h1 className="text-2xl font-bold mt-10 mb-6"> Hero Section </h1>
 

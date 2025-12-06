@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+// import axioss from "axioss";
 import toast from "react-hot-toast";
+import axioss from "../../axiosConfig";
 
 const ContactPage = () => {
   // ================= CONTACT HERO SECTION STATE =================
@@ -16,8 +17,8 @@ const ContactPage = () => {
 
   // ================= FETCH HERO =================
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/contact/hero")
+    axioss
+      .get("/api/contact/hero")
       .then((res) => {
         setContactHero(res.data);
         setContactHeroHistory([res.data]);
@@ -46,8 +47,8 @@ const ContactPage = () => {
       const updatedList = [];
 
       for (const item of contactHeroTemp) {
-        const res = await axios.put(
-          `http://localhost:8080/api/contact/hero/${item.id}`,
+        const res = await axioss.put(
+          `/api/contact/hero/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -94,8 +95,8 @@ const ContactPage = () => {
       const updatedList = [];
 
       for (const item of contactHero) {
-        const res = await axios.put(
-          `http://localhost:8080/api/contact/hero/${item.id}`,
+        const res = await axioss.put(
+          `/api/contact/hero/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -124,8 +125,8 @@ const ContactPage = () => {
 
   // ================= FETCH ABOUT DATA =================
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/contact/about")
+    axioss
+      .get("/api/contact/about")
       .then((res) => {
         setAboutSection(res.data);
         setAboutSectionHistory([res.data]);
@@ -154,8 +155,8 @@ const ContactPage = () => {
       const updatedList = [];
 
       for (const item of aboutSectionTemp) {
-        const res = await axios.put(
-          `http://localhost:8080/api/contact/about/${item.id}`,
+        const res = await axioss.put(
+          `/api/contact/about/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -202,8 +203,8 @@ const ContactPage = () => {
       const updatedList = [];
 
       for (const item of aboutSection) {
-        const res = await axios.put(
-          `http://localhost:8080/api/contact/about/${item.id}`,
+        const res = await axioss.put(
+          `/api/contact/about/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -232,8 +233,8 @@ const ContactPage = () => {
 
   // ================= FETCH CONTACT INFO CARDS =================
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/contact/info")
+    axioss
+      .get("/api/contact/info")
       .then((res) => {
         setContactCards(res.data);
         setContactCardsHistory([res.data]);
@@ -262,8 +263,8 @@ const ContactPage = () => {
       const updatedList = [];
 
       for (const card of contactCardsTemp) {
-        const res = await axios.put(
-          `http://localhost:8080/api/contact/info/${card.id}`,
+        const res = await axioss.put(
+          `/api/contact/info/${card.id}`,
           card
         );
         updatedList.push(res.data);
@@ -310,8 +311,8 @@ const ContactPage = () => {
       const updatedList = [];
 
       for (const card of contactCards) {
-        const res = await axios.put(
-          `http://localhost:8080/api/contact/info/${card.id}`,
+        const res = await axioss.put(
+          `/api/contact/info/${card.id}`,
           card
         );
         updatedList.push(res.data);

@@ -86,13 +86,13 @@ const Solutions = () => {
   // Fetch data from backend APIs
   useEffect(() => {
     // Hero Section
-    fetch("http://localhost:8080/api/solutions/hero")
+    fetch("https://customtectlab-backend.up.railway.app/api/solutions/hero")
       .then((res) => res.json())
       .then((data) => setHero(data))
       .catch((err) => console.error("Failed to fetch Solutions Hero:", err));
 
     // Cards Section
-    fetch("http://localhost:8080/api/solutions/cards")
+    fetch("https://customtectlab-backend.up.railway.app/api/solutions/cards")
       .then((res) => res.json())
       .then((data) => {
         const formatted = data.map((item) => ({
@@ -106,7 +106,7 @@ const Solutions = () => {
       .catch((err) => console.error("Failed to fetch Solutions Cards:", err));
 
     // CTA Section
-    fetch("http://localhost:8080/api/solutions/cta")
+    fetch("https://customtectlab-backend.up.railway.app/api/solutions/cta")
       .then((res) => res.json())
       .then((data) => setCta(data))
       .catch((err) => console.error("Failed to fetch Solutions CTA:", err));

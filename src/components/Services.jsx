@@ -225,7 +225,7 @@ const Services = () => {
   // FETCH DATA FROM API
   useEffect(() => {
     // SERVICES HERO
-    fetch("http://localhost:8080/api/services/hero")
+    fetch("https://customtectlab-backend.up.railway.app/api/services/hero")
       .then((res) => res.json())
       .then((data) => {
         setHero(data[0]);
@@ -233,7 +233,7 @@ const Services = () => {
       .catch((err) => console.error("Failed to fetch Services Hero:", err));
 
     // SERVICES LIST
-    fetch("http://localhost:8080/api/services/cards")
+    fetch("https://customtectlab-backend.up.railway.app/api/services/cards")
       .then((res) => res.json())
       .then((data) => {
         // Separate highlight card (id: 6)
@@ -262,7 +262,7 @@ const Services = () => {
       .catch((err) => console.error("Failed to fetch services:", err));
 
     // CTA SECTION
-    fetch("http://localhost:8080/api/services/cta")
+    fetch("https://customtectlab-backend.up.railway.app/api/services/cta")
       .then((res) => res.json())
       .then((data) => setCta(data)) // data is NOT an array
       .catch((err) => console.error("Failed to fetch CTA:", err));

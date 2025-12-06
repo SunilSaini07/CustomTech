@@ -1,5 +1,6 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+// import axios from "axios";
+import axioss from "../axiosConfig";
 
 function Users() {
   const [users, setUsers] = useState([]);
@@ -19,7 +20,7 @@ function Users() {
 
   const [toast, setToast] = useState("");
 
-  const API = "http://localhost:8080/api/contacts";
+  const API = "https://customtectlab-backend.up.railway.app/api/contacts";
 
   const showToast = (msg) => {
     setToast(msg);
@@ -27,7 +28,7 @@ function Users() {
   };
 
   const loadUsers = () => {
-    axios
+    axioss
       .get(API)
       .then((res) => setUsers(res.data))
       .catch((err) => console.error("Error loading users:", err));
@@ -38,7 +39,7 @@ function Users() {
   }, []);
 
   const deleteUser = (id) => {
-    axios
+    axioss
       .delete(`${API}/${id}`)
       .then(() => {
         loadUsers();
@@ -57,7 +58,7 @@ function Users() {
   };
 
   const saveUpdate = () => {
-    axios
+    axioss
       .put(`${API}/${editing}`, form)
       .then(() => {
         setEditing(null);

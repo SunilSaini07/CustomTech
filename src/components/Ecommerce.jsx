@@ -148,22 +148,22 @@ const EcommerceService = () => {
 
   //Fetch data from API
   useEffect(() => {
-    fetch("http://localhost:8080/api/ecommerce/hero")
+    fetch("https://customtectlab-backend.up.railway.app/api/ecommerce/hero")
       .then((res) => res.json())
       .then((data) => setHero(data))
       .catch((err) => console.error("Failed to fetch ecommerce hero:", err));
 
-    fetch("http://localhost:8080/api/ecommerce/core")
+    fetch("https://customtectlab-backend.up.railway.app/api/ecommerce/core")
       .then((res) => res.json())
       .then((data) => setCoreFeatures(data))
       .catch((err) => console.error("Failed to load core features:", err));
 
-    fetch("http://localhost:8080/api/ecommerce/modules")
+    fetch("https://customtectlab-backend.up.railway.app/api/ecommerce/modules")
       .then((res) => res.json())
       .then((data) => setModules(data))
       .catch((err) => console.error("Failed to fetch Advanced Modules:", err));
 
-    fetch("http://localhost:8080/api/ecommerce/cta")
+    fetch("https://customtectlab-backend.up.railway.app/api/ecommerce/cta")
       .then((res) => res.json())
       .then((data) => setCta(data))
       .catch((err) => console.error("Failed to fetch CTA:", err));

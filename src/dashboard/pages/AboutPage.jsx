@@ -428,6 +428,7 @@ const AboutPage = () => {
         setAboutCTA(res.data);
         setAboutCTAHistory([res.data]);
         setAboutCTALoading(false);
+        console.log(res.data);
       })
       .catch(() => setAboutCTALoading(false));
   }, []);

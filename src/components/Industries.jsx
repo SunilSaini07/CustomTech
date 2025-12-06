@@ -116,7 +116,7 @@ const Industries = () => {
 
   useEffect(() => {
     // HERO SECTION
-    fetch("http://localhost:8080/api/industries/hero")
+    fetch("https://customtectlab-backend.up.railway.app/api/industries/hero")
       .then((res) => res.json())
       .then((data) => {
         setHeroData(data);
@@ -124,7 +124,7 @@ const Industries = () => {
       .catch((err) => console.error("Failed to fetch hero data:", err));
 
     // INDUSTRY SECTIONS
-    fetch("http://localhost:8080/api/industries/industry")
+    fetch("https://customtectlab-backend.up.railway.app/api/industries/industry")
       .then((res) => res.json())
       .then((data) => {
         const formatted = data.map((item) => ({
@@ -154,13 +154,13 @@ const Industries = () => {
       .catch((err) => console.error("Failed to fetch industry data:", err));
 
     // VISUAL CARDS
-    fetch("http://localhost:8080/api/industries/card")
+    fetch("https://customtectlab-backend.up.railway.app/api/industries/card")
       .then((res) => res.json())
       .then((data) => setCards(data))
       .catch((err) => console.error("Failed to fetch card data:", err));
 
     // Fetch CTA
-    fetch("http://localhost:8080/api/industries/cta")
+    fetch("https://customtectlab-backend.up.railway.app/api/industries/cta")
       .then((res) => res.json())
       .then((data) => {
         setCta(data[0]);

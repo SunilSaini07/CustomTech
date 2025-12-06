@@ -160,7 +160,7 @@ const Home = () => {
   useEffect(() => {
 
     // HERO SECTION
-    fetch("http://localhost:8080/api/home/hero")
+    fetch("https://customtectlab-backend.up.railway.app/api/home/hero")
       .then((res) => res.json())
       .then((data) => {
         setHeroData(data);
@@ -168,7 +168,7 @@ const Home = () => {
       .catch((err) => console.error("Failed to fetch hero data:", err));
 
     //ABOUT SECTION
-    fetch("http://localhost:8080/api/home/about")
+    fetch("https://customtectlab-backend.up.railway.app/api/home/about")
       .then((res) => res.json())
       .then((data) => {
         setAboutData(data);
@@ -176,7 +176,7 @@ const Home = () => {
       .catch((err) => console.error("Failed to fetch about data:", err));
 
     // INDUSTRIES SECTION
-    fetch("http://localhost:8080/api/home/industries")
+    fetch("https://customtectlab-backend.up.railway.app/api/home/industries")
       .then((res) => res.json())
       .then((data) => {
         const main = data[0];
@@ -206,7 +206,7 @@ const Home = () => {
       .catch((err) => console.error("Failed to fetch industries data:", err));
 
     // SERVICES SECTION
-    fetch("http://localhost:8080/api/home/services")
+    fetch("https://customtectlab-backend.up.railway.app/api/home/services")
       .then((res) => res.json())
       .then((data) => {
         const header = data[0];
@@ -221,7 +221,7 @@ const Home = () => {
       .catch((err) => console.error("Failed to fetch services data:", err));
 
     // SOLUTIONS SECTION
-    fetch("http://localhost:8080/api/home/solutions")
+    fetch("https://customtectlab-backend.up.railway.app/api/home/solutions")
       .then((res) => res.json())
       .then((data) => {
         const main = data[0];
@@ -240,7 +240,7 @@ const Home = () => {
       .catch((err) => console.error("Failed to fetch solutions data:", err));
 
     // CTA DATA
-    fetch("http://localhost:8080/api/home/cta")
+    fetch("https://customtectlab-backend.up.railway.app/api/home/cta")
       .then((res) => res.json())
       .then((data) => {
         setCtaData({

@@ -118,7 +118,7 @@ const Contact = () => {
     const payload = { fullname, email, message };
 
     try {
-      const res = await fetch("http://localhost:8080/api/contacts", {
+      const res = await fetch("https://customtectlab-backend.up.railway.app/api/contacts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -139,17 +139,17 @@ const Contact = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/contact/hero")
+    fetch("https://customtectlab-backend.up.railway.app/api/contact/hero")
       .then((res) => res.json())
       .then((data) => setContactHero(data))
       .catch((err) => console.error("Failed to fetch Contact Hero:", err));
 
-    fetch("http://localhost:8080/api/contact/about")
+    fetch("https://customtectlab-backend.up.railway.app/api/contact/about")
       .then((res) => res.json())
       .then((data) => setAboutData(data))
       .catch((err) => console.error("Failed to fetch About Section:", err));
 
-    fetch("http://localhost:8080/api/contact/info")
+    fetch("https://customtectlab-backend.up.railway.app/api/contact/info")
       .then((res) => res.json())
       .then((data) => {
         setInfoCards(data);

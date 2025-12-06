@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
+import axioss from "../../axiosConfig";
 import toast from "react-hot-toast";
 
 const SolutionsPage = () => {
@@ -16,8 +17,8 @@ const SolutionsPage = () => {
 
   // ================= FETCH HERO =================
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/solutions/hero")
+    axioss
+      .get("/api/solutions/hero")
       .then((res) => {
         setHero(res.data); // API returns an object
         setHeroHistory([res.data]); // Track history
@@ -44,8 +45,8 @@ const SolutionsPage = () => {
   // ================= SAVE (PUT TEMP DATA) =================
   const handleHeroSave = async () => {
     try {
-      const res = await axios.put(
-        `http://localhost:8080/api/solutions/hero/${hero.id}`,
+      const res = await axioss.put(
+        `/api/solutions/hero/${hero.id}`,
         heroTemp
       );
 
@@ -88,8 +89,8 @@ const SolutionsPage = () => {
   // ================= UPDATE (PUT CURRENT HERO) =================
   const handleHeroUpdate = async () => {
     try {
-      const res = await axios.put(
-        `http://localhost:8080/api/solutions/hero/${hero.id}`,
+      const res = await axioss.put(
+        `/api/solutions/hero/${hero.id}`,
         hero
       );
 
@@ -117,8 +118,8 @@ const SolutionsPage = () => {
 
   // ================= FETCH CARDS =================
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/solutions/cards")
+    axioss
+      .get("/api/solutions/cards")
       .then((res) => {
         setCards(res.data);
         setCardsHistory([res.data]);
@@ -147,8 +148,8 @@ const SolutionsPage = () => {
       const updatedList = [];
 
       for (const item of cardsTemp) {
-        const res = await axios.put(
-          `http://localhost:8080/api/solutions/cards/${item.id}`,
+        const res = await axioss.put(
+          `/api/solutions/cards/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -196,8 +197,8 @@ const SolutionsPage = () => {
       const updatedList = [];
 
       for (const item of cards) {
-        const res = await axios.put(
-          `http://localhost:8080/api/solutions/cards/${item.id}`,
+        const res = await axioss.put(
+          `/api/solutions/cards/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -226,8 +227,8 @@ const SolutionsPage = () => {
 
   // ================= FETCH CTA =================
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/solutions/cta")
+    axioss
+      .get("/api/solutions/cta")
       .then((res) => {
         setCta(res.data); // API returns a single object
         setCtaHistory([res.data]);
@@ -254,8 +255,8 @@ const SolutionsPage = () => {
   // ================= SAVE =================
   const handleCtaSave = async () => {
     try {
-      const res = await axios.put(
-        `http://localhost:8080/api/solutions/cta/${cta.id}`,
+      const res = await axioss.put(
+        `/api/solutions/cta/${cta.id}`,
         ctaTemp
       );
 
@@ -297,8 +298,8 @@ const SolutionsPage = () => {
   // ================= UPDATE =================
   const handleCtaUpdate = async () => {
     try {
-      const res = await axios.put(
-        `http://localhost:8080/api/solutions/cta/${cta.id}`,
+      const res = await axioss.put(
+        `/api/solutions/cta/${cta.id}`,
         cta
       );
 
