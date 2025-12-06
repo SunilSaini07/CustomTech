@@ -2,18 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import "../App.css";
+import { IoRefreshCircleSharp } from "react-icons/io5";
 
+// GLOBAL EFFECT FOR SMOOTH SCROLLING
 const Home = () => {
-  // Global Effect for smooth scrolling
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
     return () => (document.documentElement.style.scrollBehavior = "auto");
   }, []);
 
+  // HELPER COMPONENT: RENDERS TEXT WITH A GRADIENT EFFECT.
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // Helper Component: Renders text with a gradient effect.
-  // Kept here because it's used throughout the body content.
   const GradientText = ({ children, className = "" }) => (
     <span
       className={`bg-clip-text text-transparent bg-linear-to-r from-cyan-400 to-purple-500 font-extrabold ${className}`}
@@ -22,28 +21,34 @@ const Home = () => {
     </span>
   );
 
-  useEffect(() => {
-    const cards = document.querySelectorAll(".solution-card");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("visible");
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    cards.forEach((card) => observer.observe(card));
-    return () => observer.disconnect();
-  }, []);
-
-  // Navigation Items for both Navbar and content
+  // NAVIGATION ITEMS FOR BOTH NAVBAR AND CONTENT
   const navItems = ["Home", "Industries", "Services", "Solutions", "About Us"];
 
-  // --- Section Data --- (All original data arrays remain here)
-  const industryData = [
+  // --- SECTION DATA --- (ALL ORIGINAL DATA ARRAYS REMAIN HERE)
 
-    {
+  // HERO SECTION
+  const [heroData, setHeroData] = useState({
+    title: "Build Your Digital Future",
+    subtitle:"Custom web and mobile applications designed to scale, perform, and deliver measurable business impact.",
+    ctaText: "Start Your Project",
+    ctaUrl: "/contact",
+  });
+
+  // ABOUT SECTION
+  const [aboutData, setAboutData] = useState({
+    title: "Custom Software, Engineered for Scale.",
+    paragraph1:
+      "At CustomTechCT USA, we specialize in building custom web and mobile applications designed to scale, perform, and deliver measurable business impact.",
+    paragraph2:
+      "We combine creativity with technology to deliver seamless user experiences and cutting-edge functionality.",
+    quote: '"From idea validation to deployment and ongoing support."',
+  });
+
+  // INDUSTRIES SECTION
+  const [industries, setIndustries] = useState({
+    mainTitle: "Industries: Focused Expertise",
+    items: [
+       {
       title: "eCommerce",
       icon: "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z",
       description:
@@ -66,7 +71,7 @@ const Home = () => {
         "Patient Tracking Portals",
       ],
     },
-    
+
     {
       title: "Other Industries",
       icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065z",
@@ -78,43 +83,177 @@ const Home = () => {
         "SaaS & Automation Systems",
       ],
     },
-  ];
+      
+    ],
+  });
 
-  const serviceData = [
-    "Custom Web and Mobile App Development",
-    "AI-driven Product Engineering",
-    "Cloud and API Integration",
-    "UI/UX Design and Digital Experience Optimization",
-    "Enterprise Solutions for Web, iOS, and Android",
-    "Maintenance and Post-Launch Support",
-  ];
+  // SERVICES SECTION
+  const [services, setServices] = useState({
+    title: "Our Core Services",
+    description:
+      "Comprehensive technology services to turn your ideas into market-ready digital products.",
+    list: [
+      "Custom Web and Mobile App Development",
+      "AI-driven Product Engineering",
+      "Cloud and API Integration",
+      "UI/UX Design and Digital Experience Optimization",
+      "Enterprise Solutions for Web, iOS, and Android",
+      "Maintenance and Post-Launch Support",
+    ],
+  });
 
-  const solutionData = [
-    
-    {
-      title: "Wellness & Fitness Platforms",
-      description:
-        "Encourage engagement, tracking, and personalized lifestyle management.",
-    },
-    {
-      title: "Learning & Quiz Apps",
-      description:
-        "Drive knowledge sharing and gamified, flexible learning experiences.",
-    },
-    {
-      title: "B2B & B2C Platforms",
-      description:
-        "Enable secure transactions, communication, and limitless scalability.",
-    },
-    {
-      title: "Custom Business Process Automation",
-      description:
-        "Digitize core operations for peak efficiency and deep insight.",
-    }
-  ];
-  // --- END Section Data ---
+  // SOLUTIONS SECTION
+  const [solutions, setSolutions] = useState({
+    mainTitle: "Specialized Digital Solutions",
+    items: [
+      {
+        title: "Wellness & Fitness Platforms",
+        description:
+          "Encourage engagement, tracking, and personalized lifestyle management.",
+      },
+      {
+        title: "Learning & Quiz Apps",
+        description:
+          "Drive knowledge sharing and gamified, flexible learning experiences.",
+      },
+      {
+        title: "B2B & B2C Platforms",
+        description:
+          "Enable secure transactions, communication, and limitless scalability.",
+      },
+      {
+        title: "Custom Business Process Automation",
+        description:
+          "Digitize core operations for peak efficiency and deep insight.",
+      },
+    ],
+  });
 
-  // Main component render
+  // CTA SECTION
+  const [ctaData, setCtaData] = useState({
+    title: "Ready to Transform?",
+    description:
+      "Let's turn your concept into a high-performing digital solution. Contact us today for a consultation.",
+    buttonText: "Request a Consultation",
+    buttonLink: "/contact",
+  });
+
+  // INTERSECTION OBSERVER FOR SOLUTIONS ANIMATION
+  useEffect(() => {
+    if (solutions.items.length === 0) return;
+
+    const cards = document.querySelectorAll(".solution-card");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, [solutions.items]);
+
+  useEffect(() => {
+
+    // HERO SECTION
+    fetch("http://localhost:8080/api/home/hero")
+      .then((res) => res.json())
+      .then((data) => {
+        setHeroData(data);
+      })
+      .catch((err) => console.error("Failed to fetch hero data:", err));
+
+    //ABOUT SECTION
+    fetch("http://localhost:8080/api/home/about")
+      .then((res) => res.json())
+      .then((data) => {
+        setAboutData(data);
+      })
+      .catch((err) => console.error("Failed to fetch about data:", err));
+
+    // INDUSTRIES SECTION
+    fetch("http://localhost:8080/api/home/industries")
+      .then((res) => res.json())
+      .then((data) => {
+        const main = data[0];
+        const items = data.slice(1);
+
+        const formatted = items.map((item, index) => ({
+          title: item.title,
+          description: item.description,
+          icon:
+            index === 0
+              ? "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+              : index === 1
+              ? "M9 12h6m-6 4h6m2-8a2 2 0 100-4h-3a2 2 0 100 4h3zM7 12a2 2 0 100-4h3a2 2 0 100 4H7zM4 16h16a2 2 0 002-2V6a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2z"
+              : "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065z",
+
+          // KEYS CONVERTED TO ARRAY
+          solutions: [item.key1, item.key2, item.key3],
+
+          keyTitle: item.keyTitle || "Key Solutions:",
+        }));
+
+        setIndustries({
+          mainTitle: main.mainTitle,
+          items: formatted,
+        });
+      })
+      .catch((err) => console.error("Failed to fetch industries data:", err));
+
+    // SERVICES SECTION
+    fetch("http://localhost:8080/api/home/services")
+      .then((res) => res.json())
+      .then((data) => {
+        const header = data[0];
+        const items = data.map((item) => item.serviceText);
+
+        setServices({
+          title: header.title,
+          description: header.description,
+          list: items,
+        });
+      })
+      .catch((err) => console.error("Failed to fetch services data:", err));
+
+    // SOLUTIONS SECTION
+    fetch("http://localhost:8080/api/home/solutions")
+      .then((res) => res.json())
+      .then((data) => {
+        const main = data[0];
+        const items = data;
+
+        const formatted = items.map((item) => ({
+          title: item.title,
+          description: item.description,
+        }));
+
+        setSolutions({
+          mainTitle: main.mainTitle,
+          items: formatted,
+        });
+      })
+      .catch((err) => console.error("Failed to fetch solutions data:", err));
+
+    // CTA DATA
+    fetch("http://localhost:8080/api/home/cta")
+      .then((res) => res.json())
+      .then((data) => {
+        setCtaData({
+          title: data.title,
+          description: data.description,
+          buttonText: data.buttonText,
+          buttonLink: data.buttonLink,
+        });
+      })
+      .catch((err) => console.error("Failed to fetch CTA data:", err));
+  }, []);
+
+  // MAIN COMPONENT RENDER
   return (
     <div className="min-h-screen bg-white text-gray-800 font-inter antialiased">
       {/* Header & Navigation - Renders the imported Navbar component */}
@@ -156,21 +295,26 @@ const Home = () => {
                 Roots. Future. Evolution.
               </p>
               <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black mb-6 leading-tight animate-heroFloat">
-                Build Your Digital <br className="hidden sm:inline" />
+                {/* Build Your Digital <br className="hidden sm:inline" /> */}
+                {heroData.title.split(" ").slice(0, 3).join(" ")}{" "}
+                <br className="hidden sm:inline" />
                 <GradientText className="text-7xl sm:text-8xl lg:text-9xl">
-                  Future
+                  {/* Future */}
+                  {heroData.title.split(" ").slice(3).join(" ")}
                 </GradientText>
               </h1>
               <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto mb-10">
-                Custom web and mobile applications designed to scale, perform,
-                and deliver measurable business impact.
+                {/* Custom web and mobile applications designed to scale, perform,
+                and deliver measurable business impact. */}
+                {heroData.subtitle}
               </p>
               <Link
-                to="/contact"
+                to={heroData.ctaUrl}
                 className="inline-block px-10 py-4 text-lg font-semibold rounded-full shadow-lg transition duration-500 transform hover:scale-105
                        bg-linear-to-r from-cyan-500 to-purple-600 text-white hover:shadow-cyan-500/50"
               >
-                Start Your Project
+                {/* Start Your Project */}
+                {heroData.ctaText}
               </Link>
             </div>
 
@@ -192,23 +336,30 @@ const Home = () => {
               {/* Text Section With Reveal Animation */}
               <div className="space-y-4">
                 <h2 className="text-3xl sm:text-4xl font-bold mb-4 revealItem">
-                  Custom Software, <br />
-                  <GradientText>Engineered for Scale.</GradientText>
+                  {/* Custom Software, */}
+                  {aboutData.title.split(" ").slice(0, 2).join(" ")} <br />
+                  {/* <GradientText>Engineered for Scale.</GradientText> */}
+                  <GradientText>
+                    {" "}
+                    {aboutData.title.split(" ").slice(2).join(" ")}
+                  </GradientText>
                 </h2>
 
                 <p className="text-gray-600 text-lg mb-6 revealItem">
-                  At CustomTechCT USA, we specialize in building custom web and
+                  {/* At CustomTechCT USA, we specialize in building custom web and
                   mobile applications designed to scale, perform, and deliver
                   measurable business impact. Since 2017, our team has helped
                   startups, enterprises, and global brands transform their
-                  digital ideas into powerful products.
+                  digital ideas into powerful products. */}
+                  {aboutData.paragraph1}
                 </p>
 
                 <p className="text-gray-600 text-lg revealItem">
-                  We combine creativity with technology to deliver seamless user
+                  {/* We combine creativity with technology to deliver seamless user
                   experiences and cutting-edge functionality across a diverse
                   range of industries. Our experts ensure every solution is
-                  tailored to your unique business goals.
+                  tailored to your unique business goals. */}
+                  {aboutData.paragraph2}
                 </p>
               </div>
 
@@ -251,7 +402,8 @@ const Home = () => {
                 </div>
 
                 <div className="mt-6 text-center text-gray-500 italic fadeInSlow">
-                  "From idea validation to deployment and ongoing support."
+                  {/* "From idea validation to deployment and ongoing support." */}
+                  {aboutData.quote}
                 </div>
               </div>
             </div>
@@ -265,11 +417,16 @@ const Home = () => {
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-4xl font-bold text-center mb-16  animate-heroFloat">
-              Industries: <GradientText>Focused Expertise</GradientText>
+              {/* Industries: */}
+              {industries.mainTitle?.split(":")[0]}:
+              <GradientText>
+                {/* Focused Expertise */}
+                {industries.mainTitle?.split(":")[1]}
+              </GradientText>
             </h2>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {industryData.map((industry, index) => (
+              {industries.items?.map((industry, index) => (
                 <div
                   key={industry.title}
                   className="industryCard p-8 rounded-xl bg-white border border-gray-200 shadow-lg shadow-cyan-500/10 transform hover:scale-[1.02] transition duration-500 group opacity-0 translate-y-6"
@@ -299,7 +456,8 @@ const Home = () => {
                   <p className="text-gray-600 mb-6">{industry.description}</p>
                   <div className="mt-4">
                     <p className="text-sm font-semibold mb-2 text-purple-400">
-                      Key Solutions:
+                      {/* Key Solutions: */}
+                      {industry.keyTitle}
                     </p>
                     <ul className="space-y-1 text-gray-600">
                       {industry.solutions.map((sol) => (
@@ -323,15 +481,22 @@ const Home = () => {
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-4xl font-bold text-center mb-12 animate-heroFloat">
-              Our <GradientText>Core Services</GradientText>
+              {/* Our  */}
+              {services.title?.split(" ")[0]}{" "}
+              <GradientText>
+                {/* Core Services */}
+                {services.title?.split(" ").slice(1).join(" ")}
+              </GradientText>
             </h2>
             <p className="text-xl text-gray-400 text-center max-w-3xl mx-auto mb-16 delay-200 animate-heroFloat ">
-              Comprehensive technology services to turn your ideas into
-              market-ready digital products.
+              {/* Comprehensive technology services to turn your ideas into
+              market-ready digital products. */}
+              {services.description}
             </p>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {serviceData.map((service, index) => (
+              {/* {serviceData.map((service, index) => ( */}
+              {services.list.map((service, index) => (
                 <div
                   key={service}
                   className="service-card p-6 rounded-lg bg-white border border-gray-200 flex items-start space-x-4"
@@ -374,11 +539,17 @@ const Home = () => {
         <section id="solutions" className="py-20 solutions-section">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-4xl font-bold text-center mb-16 animate-heroFloat">
-              Specialized <GradientText>Digital Solutions</GradientText>
+              {/* Specialized  */}
+              {solutions.mainTitle?.split(" ").slice(0, 1).join(" ")}{" "}
+              <GradientText>
+                {/* Digital Solutions */}
+                {solutions.mainTitle?.split(" ").slice(1).join(" ")}
+              </GradientText>
             </h2>
 
             <div className="grid md:grid-cols-2 gap-8">
-              {solutionData.map((solution, index) => (
+              {/* {solutionData.map((solution, index) => ( */}
+              {solutions.items?.map((solution, index) => (
                 <div
                   key={solution.title}
                   className="solution-card p-8 rounded-xl bg-white border border-purple-200 shadow-lg shadow-purple-500/10"
@@ -398,70 +569,90 @@ const Home = () => {
         </section>
 
         {/* 6. Contact/CTA Footer */}
-<section
-  id="contact"
-  className="py-20 bg-gray-100 border-t border-gray-200 relative overflow-hidden"
->
-  <div className="absolute inset-0 opacity-[0.18] pointer-events-none animate-bgGlow"
-       style={{ background: "radial-gradient(circle at center, rgba(6,182,212,0.5), rgba(168,85,247,0.4), transparent)" }}
-  ></div>
+        <section
+          id="contact"
+          className="py-20 bg-gray-100 border-t border-gray-200 relative overflow-hidden"
+        >
+          <div
+            className="absolute inset-0 opacity-[0.18] pointer-events-none animate-bgGlow"
+            style={{
+              background:
+                "radial-gradient(circle at center, rgba(6,182,212,0.5), rgba(168,85,247,0.4), transparent)",
+            }}
+          ></div>
 
-  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-up-cta">
-    <h2 className="text-4xl font-bold mb-4 blur-reveal">
-      Ready to <GradientText>Transform?</GradientText>
-    </h2>
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-up-cta">
+            <h2 className="text-4xl font-bold mb-4 blur-reveal">
+              {/* Ready to */}
+              {ctaData.title?.split(" ").slice(0, 2).join(" ")}{" "}
+              <GradientText>
+                {/* Transform? */}
+                {ctaData.title?.split(" ").slice(2).join(" ")}
+              </GradientText>
+            </h2>
 
-    <p className="text-xl text-gray-400 mb-8 blur-reveal delay-150">
-      Let's turn your concept into a high-performing digital solution.
-      Contact us today for a consultation.
-    </p>
+            <p className="text-xl text-gray-400 mb-8 blur-reveal delay-150">
+              {/* Let's turn your concept into a high-performing digital solution.
+              Contact us today for a consultation. */}
 
-    <a
-      href=""
-      className="cta-btn particle-btn inline-block px-10 py-4 text-lg font-semibold rounded-full shadow-lg bg-linear-to-r from-cyan-500 to-purple-600 text-white relative overflow-hidden group"
-    >
-      <span className="relative z-10">Request a Consultation</span>
-      <span className="particles"></span>
-    </a>
-  </div>
-</section>
+              {ctaData.description}
+            </p>
 
+            <a
+              href={ctaData.buttonLink}
+              className="cta-btn particle-btn inline-block px-10 py-4 text-lg font-semibold rounded-full shadow-lg bg-linear-to-r from-cyan-500 to-purple-600 text-white relative overflow-hidden group"
+            >
+              {/* <span className="relative z-10">Request a Consultation</span> */}
+              <span className="relative z-10">{ctaData.buttonText}</span>
+              <span className="particles"></span>
+            </a>
+          </div>
+        </section>
       </main>
 
-     {/* Footer */}
-<footer className="footer-animate py-8 bg-gray-50 border-t border-gray-200 relative overflow-hidden">
-  <div className="footer-glow pointer-events-none absolute inset-0"></div>
+      {/* Footer */}
+      <footer className="footer-animate py-8 bg-gray-50 border-t border-gray-200 relative overflow-hidden">
+        <div className="footer-glow pointer-events-none absolute inset-0"></div>
 
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-footer">
-    <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 text-gray-500 mb-4">
-      <Link to="/industries" className="footer-link">Industries</Link>
-      <Link to="/services" className="footer-link">Services</Link>
-      <Link to="/solutions" className="footer-link">Solutions</Link>
-      <Link to="/contact" className="footer-link">Contact</Link>
-      <Link to="/aboutus" className="footer-link">About Us</Link>
-    </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-footer">
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 text-gray-500 mb-4">
+            <Link to="/industries" className="footer-link">
+              Industries
+            </Link>
+            <Link to="/services" className="footer-link">
+              Services
+            </Link>
+            <Link to="/solutions" className="footer-link">
+              Solutions
+            </Link>
+            <Link to="/contact" className="footer-link">
+              Contact
+            </Link>
+            <Link to="/aboutus" className="footer-link">
+              About Us
+            </Link>
+          </div>
 
-    <p className="text-gray-500 text-sm opacity-90 hover:opacity-100 transition">
-      &copy; {new Date().getFullYear()} Custom Tech Lab. All rights reserved.
-    </p>
+          <p className="text-gray-500 text-sm opacity-90 hover:opacity-100 transition">
+            &copy; {new Date().getFullYear()} Custom Tech Lab. All rights
+            reserved.
+          </p>
 
-    <p className="text-gray-600 text-xs mt-1 tracking-wide opacity-80 hover:opacity-100 transition">
-      Roots. Future. Evolution. | CustomTechCT USA.
-    </p>
-  </div>
-</footer>
-
+          <p className="text-gray-600 text-xs mt-1 tracking-wide opacity-80 hover:opacity-100 transition">
+            Roots. Future. Evolution. | CustomTechCT USA.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
 
 document.addEventListener("mousemove", (e) => {
-  document.querySelectorAll(".particle-btn").forEach(btn => {
+  document.querySelectorAll(".particle-btn").forEach((btn) => {
     const rect = btn.getBoundingClientRect();
     btn.style.setProperty("--x", `${e.clientX - rect.left}px`);
     btn.style.setProperty("--y", `${e.clientY - rect.top}px`);
   });
 });
-
 
 export default Home;

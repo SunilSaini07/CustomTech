@@ -20,7 +20,15 @@ const Industries = () => {
 
   const navItems = ["Home", "Industries", "Services", "Solutions", "About Us"];
 
-  const industryData = [
+  // HERO STATE
+  const [heroData, setHeroData] = useState({
+    title: "Industries We Empower",
+    description:
+      "We help businesses across industries harness technology for transformation. From digital health to next-gen commerce, our solutions scale, automate, and innovate.",
+  });
+
+  
+  const [industryData, setIndustryData] = useState([
     {
       title: " Advanced  eCommerce",
       subtitle: "Performance-Driven Digital Commerce",
@@ -35,14 +43,13 @@ const Industries = () => {
       ],
       note: "Optimized for performance, scalability and conversion.",
       bg: "bg-gradient-to-r from-purple-50 to-white",
-      route: "/industries/ecommerce-development"
-      
+      route: "/industries/ecommerce-development",
     },
     {
       title: "Healthcare",
       subtitle: "Innovation and Compliance in Digital Health",
       description:
-      "We build transformative healthcare technology — empowering hospitals, assisted living facilities, and pharmacies with systems that improve patient care and operational efficiency.",
+        "We build transformative healthcare technology — empowering hospitals, assisted living facilities, and pharmacies with systems that improve patient care and operational efficiency.",
       solutions: [
         "Custom EMAR Software Development",
         "Pharmacy Management Platforms",
@@ -52,13 +59,13 @@ const Industries = () => {
       ],
       note: "All healthcare applications meet HIPAA and HL7 compliance.",
       bg: "bg-gradient-to-r from-cyan-50 to-white",
-      route: "/contact"
+      route: "/contact",
     },
     {
       title: "Other Industries",
       subtitle: "Smart Digital Ecosystems",
       description:
-      "We bring innovation across sectors, helping businesses move from legacy systems to scalable platforms.",
+        "We bring innovation across sectors, helping businesses move from legacy systems to scalable platforms.",
       solutions: [
         "CRM, HRMS, ATS",
         "Fitness & Wellness Apps",
@@ -68,9 +75,98 @@ const Industries = () => {
       ],
       note: "Designed for security, scale and long-term adaptability.",
       bg: "bg-gradient-to-r from-blue-50 to-white",
-      route: "/contact"
+      route: "/contact",
     },
-  ];
+  ]);
+
+  const [cards, setCards] = useState([
+    {
+      id: 1,
+      title: "Advanced eCommerce Solutions",
+      description:
+        "Learn how we help organizations in the advanced ecommerce sector achieve measurable results and long-term digital success.",
+      buttonLink: "/industries/ecommerce-development",
+      buttonText: "Discuss Your Project",
+    },
+    {
+      id: 2,
+      title: "Healthcare   solutions",
+      description:
+        "Learn how we help organizations in the healthcare sector achieve measurable results and long-term digital success.",
+      buttonLink: "/contact",
+      buttonText: "Discuss Your Project",
+    },
+    {
+      id: 3,
+      title: "Other Industries Solutions",
+      description:
+        "Learn how we help organizations in the other industries sector achieve measurable results and long-term digital success.",
+      buttonLink: "/contact",
+      buttonText: "Discuss Your Project",
+    },
+  ]);
+
+  const [cta, setCta] = useState({
+      id: 1,
+      title: "Ready to Transform Your Industry?",
+      description:"Let’s build digital products that create measurable impact.",
+      buttonText: "Get in Touch",
+      buttonLink: "/contact"
+});
+
+  useEffect(() => {
+    // HERO SECTION
+    fetch("http://localhost:8080/api/industries/hero")
+      .then((res) => res.json())
+      .then((data) => {
+        setHeroData(data);
+      })
+      .catch((err) => console.error("Failed to fetch hero data:", err));
+
+    // INDUSTRY SECTIONS
+    fetch("http://localhost:8080/api/industries/industry")
+      .then((res) => res.json())
+      .then((data) => {
+        const formatted = data.map((item) => ({
+          title: item.title,
+          subtitle: item.subTitle,
+          description: item.description,
+          solutions: [
+            item.keyText1,
+            item.keyText2,
+            item.keyText3,
+            item.keyText4,
+            item.keyText5,
+          ],
+          note: item.note,
+          bg:
+            item.id === 1
+              ? "bg-gradient-to-r from-purple-50 to-white"
+              : item.id === 2
+              ? "bg-gradient-to-r from-cyan-50 to-white"
+              : "bg-gradient-to-r from-blue-50 to-white",
+          route:
+            item.id === 1 ? "/industries/ecommerce-development" : "/contact",
+        }));
+
+        setIndustryData(formatted);
+      })
+      .catch((err) => console.error("Failed to fetch industry data:", err));
+
+    // VISUAL CARDS
+    fetch("http://localhost:8080/api/industries/card")
+      .then((res) => res.json())
+      .then((data) => setCards(data))
+      .catch((err) => console.error("Failed to fetch card data:", err));
+
+    // Fetch CTA
+    fetch("http://localhost:8080/api/industries/cta")
+      .then((res) => res.json())
+      .then((data) => {
+        setCta(data[0]);
+      })
+      .catch((err) => console.error("Failed to fetch CTA data:", err));
+  }, []);
 
   return (
     <div className="min-h-screen bg-white text-gray-800 font-inter antialiased relative">
@@ -138,45 +234,44 @@ const Industries = () => {
         </div>
 
         <div className="relative z-20 max-w-7xl mx-auto px-6 text-center">
-          
           <div className="absolute inset-0 opacity-20 pointer-events-none">
-          <div className="w-160 h-160 bg-cyan-400 rounded-full blur-[900px] absolute -top-10 left-1/4 animate-ping delay-700"></div>
-          <div className="w-140 h-140 bg-purple-500 rounded-full blur-[900px] absolute bottom-0 right-1/4 animate-ping delay-700"></div>
+            <div className="w-160 h-160 bg-cyan-400 rounded-full blur-[900px] absolute -top-10 left-1/4 animate-ping delay-700"></div>
+            <div className="w-140 h-140 bg-purple-500 rounded-full blur-[900px] absolute bottom-0 right-1/4 animate-ping delay-700"></div>
           </div>
 
           <h1 className="text-5xl sm:text-6xl font-extrabold mb-6 tracking-tight">
-            <GradientText>Industries</GradientText> We Empower
+            {/* <GradientText>Industries</GradientText> We Empower */}
+            <GradientText>{heroData.title.split(" ")[0]} </GradientText>{" "}
+            {heroData?.title.split(" ").slice(1).join(" ")}
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We help businesses across industries harness technology for
-            transformation. From digital health to next-gen commerce, our
-            solutions scale, automate, and innovate.
+            {heroData.description}
           </p>
         </div>
       </section>
       {/* ---------- Industry Sections ---------- */}
       {industryData.map((ind, i) => (
         <section
-          key={ind.title}
+          key={ind?.title || i}
           className={`${ind.bg} border-b border-gray-100`}
         >
           <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center py-20">
             {/* Text */}
             <div className={`${i % 2 !== 0 ? "md:order-2" : ""} fadeUp`}>
-              <h2 className="text-4xl font-bold mb-2">{ind.title}</h2>
+              <h2 className="text-4xl font-bold mb-2">{ind?.title}</h2>
               <h3 className="text-xl text-cyan-600 font-medium mb-5">
-                {ind.subtitle}
+                {ind?.subtitle}
               </h3>
               <p className="text-gray-600 text-lg mb-6 leading-relaxed">
-                {ind.description}
+                {ind?.description}
               </p>
 
               <div className="mb-4">
                 <p className="text-sm font-semibold text-purple-400 mb-2">
-                  Key Solutions:
+                  {ind?.keyTitle || "Key Solutions:"}
                 </p>
                 <ul className="space-y-1 text-gray-700">
-                  {ind.solutions.map((sol) => (
+                  {ind?.solutions?.map((sol) => (
                     <li key={sol} className="flex items-start">
                       <span className="text-cyan-500 mr-2 mt-1.5">•</span>
                       {sol}
@@ -185,83 +280,100 @@ const Industries = () => {
                 </ul>
               </div>
 
-              <p className="text-sm text-gray-500 italic">{ind.note}</p>
+              <p className="text-sm text-gray-500 italic">{ind?.note}</p>
             </div>
 
             {/* Visual Card */}
-            <div
-              className={`relative rounded-2xl shadow-xl bg-white/60 border border-white/50 backdrop-blur-lg p-10 text-center transform transition-transform duration-500 premiumCard ${
-                i % 2 !== 0 ? "md:order-1" : ""
-              } fadeUp`}
-              style={{ willChange: "transform, box-shadow" }}
-            >
-              <h4 className="text-2xl font-semibold mb-4">
-                <GradientText>{ind.title}</GradientText> Solutions
-              </h4>
-              <p className="text-gray-600 text-base mb-6">
-                Learn how we help organizations in the {ind.title.toLowerCase()}{" "}
-                sector achieve measurable results and long-term digital success.
-              </p>
-              <Link
-                to={ind.route}
-                className="inline-block px-8 py-3 rounded-full text-white font-semibold bg-linear-to-r from-cyan-500 to-purple-600 hover:scale-105 transform transition"
-              >
-                Discuss Your Project
-              </Link>
-
-              {/* small accent */}
+            {cards[i] && (
               <div
-                className="absolute -top-5 -right-1 rounded-full opacity-50 animate-ping"
-                style={{
-                  width: 70,
-                  height: 70,
-                  background: "linear-gradient(135deg,#06b6d4,#8b5cf6)",
-                  filter: "blur(30px)",
-                }}
-              />
-            </div>
+                className={`relative rounded-2xl shadow-xl bg-white/60 border border-white/50 backdrop-blur-lg p-10 text-center transform transition-transform duration-500 premiumCard ${
+                  i % 2 !== 0 ? "md:order-1" : ""
+                } fadeUp`}
+                style={{ willChange: "transform, box-shadow" }}
+              >
+                <h4 className="text-2xl font-semibold mb-4">
+                  <GradientText>
+                    {cards[i]?.title.split(" ").slice(0, 2).join(" ")}{" "}
+                  </GradientText>{" "}
+                  {cards[i]?.title.split(" ").slice(2).join(" ")}
+                </h4>
+                <p className="text-gray-600 text-base mb-6">
+                  {cards[i]?.description}
+                </p>
+                <Link
+                  to={cards[i]?.buttonLink}
+                  className="inline-block px-8 py-3 rounded-full text-white font-semibold bg-linear-to-r from-cyan-500 to-purple-600 hover:scale-105 transform transition"
+                >
+                  {cards[i]?.buttonText}
+                </Link>
+
+                {/* small accent */}
+                <div
+                  className="absolute -top-5 -right-1 rounded-full opacity-50 animate-ping"
+                  style={{
+                    width: 70,
+                    height: 70,
+                    background: "linear-gradient(135deg,#06b6d4,#8b5cf6)",
+                    filter: "blur(30px)",
+                  }}
+                />
+              </div>
+            )}
           </div>
         </section>
       ))}
+
       {/* ---------- CTA ---------- */}
       <section className="py-24 bg-linear-to-r from-gray-50 via-white to-gray-100 text-center">
         <div className="relative z-10 max-w-3xl mx-auto px-6">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            Ready to <GradientText>Transform Your Industry?</GradientText>
+           {cta.title.split(" ").slice(0,2).join(" ")} {" "} <GradientText>{cta.title.split(" ").slice(2).join(" ")}</GradientText>  
           </h2>
           <p className="text-lg text-gray-600 mb-10 leading-relaxed">
-            Let’s build digital products that create measurable impact.
+           {cta.description}
           </p>
           <Link
-            to="/contact"
+            to={cta.buttonLink}
             className="inline-block px-10 py-4 text-lg font-semibold rounded-full bg-linear-to-r from-cyan-500 to-purple-600 text-white hover:scale-105 transition-transform"
           >
-            Get in Touch
+            {cta.buttonText}
           </Link>
         </div>
       </section>
+
       {/* Footer */}
-<footer className="footer-animate py-8 bg-gray-50 border-t border-gray-200 relative overflow-hidden">
-  <div className="footer-glow pointer-events-none absolute inset-0"></div>
+      <footer className="footer-animate py-8 bg-gray-50 border-t border-gray-200 relative overflow-hidden">
+        <div className="footer-glow pointer-events-none absolute inset-0"></div>
 
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-footer">
-    <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 text-gray-500 mb-4">
-      <Link to="/" className="footer-link">Home</Link>
-      <Link to="/services" className="footer-link">Services</Link>
-      <Link to="/solutions" className="footer-link">Solutions</Link>
-      <Link to="/contact" className="footer-link">Contact</Link>
-      <Link to="/aboutus" className="footer-link">About Us</Link>
-    </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-footer">
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 text-gray-500 mb-4">
+            <Link to="/" className="footer-link">
+              Home
+            </Link>
+            <Link to="/services" className="footer-link">
+              Services
+            </Link>
+            <Link to="/solutions" className="footer-link">
+              Solutions
+            </Link>
+            <Link to="/contact" className="footer-link">
+              Contact
+            </Link>
+            <Link to="/aboutus" className="footer-link">
+              About Us
+            </Link>
+          </div>
 
-    <p className="text-gray-500 text-sm opacity-90 hover:opacity-100 transition">
-      &copy; {new Date().getFullYear()} Custom Tech Lab. All rights reserved.
-    </p>
+          <p className="text-gray-500 text-sm opacity-90 hover:opacity-100 transition">
+            &copy; {new Date().getFullYear()} Custom Tech Lab. All rights
+            reserved.
+          </p>
 
-    <p className="text-gray-600 text-xs mt-1 tracking-wide opacity-80 hover:opacity-100 transition">
-      Roots. Future. Evolution. | CustomTechCT USA.
-    </p>
-  </div>
-</footer>
+          <p className="text-gray-600 text-xs mt-1 tracking-wide opacity-80 hover:opacity-100 transition">
+            Roots. Future. Evolution. | CustomTechCT USA.
+          </p>
+        </div>
+      </footer>
 
       {/* ---------- Inline CSS (animations & helpers) ---------- */}
       <style>{`

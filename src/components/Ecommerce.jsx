@@ -3,6 +3,120 @@ import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 
 const EcommerceService = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const [hero, setHero] = useState([
+    {
+      id: 1,
+      title: "Advanced E-Commerce Development",
+      description:
+        "Tailored commerce solutions built for performance, reliability and long-term growth.",
+      button1Link: "/contact",
+      button1Text: "Start a Project",
+      button2Link: "/contact",
+      button2Text: "Talk to Sales",
+      updatedAt: "2025-12-03T10:30:19",
+    },
+  ]);
+
+  const [coreFeatures, setCoreFeatures] = useState([
+    {
+      id: 1,
+      title: "Core Features",
+      featureText: "Custom eCommerce platform development",
+      updatedAt: "2025-12-03T11:14:12",
+    },
+    {
+      id: 2,
+      title: "Core Features",
+      featureText: "AI-powered product search and recommendations",
+      updatedAt: "2025-12-03T11:14:12",
+    },
+    {
+      id: 3,
+      title: "Core Features",
+      featureText: "Secure multi-currency payment integration",
+      updatedAt: "2025-12-03T11:14:12",
+    },
+    {
+      id: 4,
+      title: "Core Features",
+      featureText: "Inventory and order management",
+      updatedAt: "2025-12-03T11:14:12",
+    },
+    {
+      id: 5,
+      title: "Core Features",
+      featureText: "Subscription management",
+      updatedAt: "2025-12-03T11:14:12",
+    },
+    {
+      id: 6,
+      title: "Core Features",
+      featureText: "Mobile app integration for iOS and Android",
+      updatedAt: "2025-12-03T11:14:12",
+    },
+  ]);
+
+  const [modules, setModules] = useState([
+    {
+      id: 1,
+      title: "Advanced Modules",
+      moduleText: "Custom admin panel with role-based access",
+      updatedAt: "2025-12-03T11:37:50",
+    },
+    {
+      id: 2,
+      title: "Advanced Modules",
+      moduleText: "Warehouse management system (WMS)",
+      updatedAt: "2025-12-03T11:37:50",
+    },
+    {
+      id: 3,
+      title: "Advanced Modules",
+      moduleText: "Influencer and affiliate management",
+      updatedAt: "2025-12-03T11:37:50",
+    },
+    {
+      id: 4,
+      title: "Advanced Modules",
+      moduleText: "Loyalty, wallet, and rewards system",
+      updatedAt: "2025-12-03T11:37:50",
+    },
+    {
+      id: 5,
+      title: "Advanced Modules",
+      moduleText: "CRM and marketing automation",
+      updatedAt: "2025-12-03T11:37:50",
+    },
+    {
+      id: 6,
+      title: "Advanced Modules",
+      moduleText: "B2B, B2C, and multi-vendor capabilities",
+      updatedAt: "2025-12-03T11:37:50",
+    },
+  ]);
+
+  const [cta, setCta] = useState([
+    {
+      id: 1,
+      title: "Built to Scale. Built for Your Business",
+      description:
+        "Let’s build a commerce platform that grows with your brand.",
+      buttonText: "Start Your Project",
+      buttonLink: "/contact",
+      updatedAt: "2025-12-03T11:57:47",
+    },
+  ]);
+
+  const GradientText = ({ children, className = "" }) => (
+    <span
+      className={`bg-clip-text text-transparent bg-linear-to-r from-cyan-400 via-blue-400 to-purple-500 font-extrabold ${className}`}
+    >
+      {children}
+    </span>
+  );
+
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
     return () => (document.documentElement.style.scrollBehavior = "auto");
@@ -32,15 +146,28 @@ const EcommerceService = () => {
     return ref;
   };
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  //Fetch data from API
+  useEffect(() => {
+    fetch("http://localhost:8080/api/ecommerce/hero")
+      .then((res) => res.json())
+      .then((data) => setHero(data))
+      .catch((err) => console.error("Failed to fetch ecommerce hero:", err));
 
-  const GradientText = ({ children, className = "" }) => (
-    <span
-      className={`bg-clip-text text-transparent bg-linear-to-r from-cyan-400 via-blue-400 to-purple-500 font-extrabold ${className}`}
-    >
-      {children}
-    </span>
-  );
+    fetch("http://localhost:8080/api/ecommerce/core")
+      .then((res) => res.json())
+      .then((data) => setCoreFeatures(data))
+      .catch((err) => console.error("Failed to load core features:", err));
+
+    fetch("http://localhost:8080/api/ecommerce/modules")
+      .then((res) => res.json())
+      .then((data) => setModules(data))
+      .catch((err) => console.error("Failed to fetch Advanced Modules:", err));
+
+    fetch("http://localhost:8080/api/ecommerce/cta")
+      .then((res) => res.json())
+      .then((data) => setCta(data))
+      .catch((err) => console.error("Failed to fetch CTA:", err));
+  }, []);
 
   return (
     <div className="min-h-screen bg-white text-gray-800 font-inter antialiased">
@@ -104,11 +231,11 @@ const EcommerceService = () => {
               animationTimingFunction: "ease-out",
             }}
           >
-            Advanced {" "}
+            {hero[0].title.split(" ").slice(0, 1).join(" ")} {" "}
             <span className="bg-clip-text text-transparent bg-linear-to-r from-cyan-400 via-blue-400 to-purple-500 font-extrabold">
-              E-Commerce   
+            {hero[0].title.split(" ").slice(1, 2).join(" ")} {" "}
             </span>
-            <span> Development </span>
+            <span>{hero[0].title.split(" ").slice(2).join(" ")} {" "}</span>
           </h1>
 
           <p
@@ -121,8 +248,7 @@ const EcommerceService = () => {
               animationDelay: "200ms",
             }}
           >
-            Tailored commerce solutions built for performance, reliability and
-            long-term growth.
+            {hero[0].description}
           </p>
 
           <div
@@ -136,19 +262,19 @@ const EcommerceService = () => {
             }}
           >
             <Link
-              to="/contact"
+              to={hero[0].button1Link}
               className="px-8 py-3 rounded-full bg-linear-to-r from-cyan-500 to-blue-600 text-white font-semibold shadow-md hover:shadow-xl transition transform hover:scale-[1.05]"
               style={{ transition: "transform .25s ease" }}
             >
-              Start a Project
+              {hero[0].button1Text}
             </Link>
 
             <Link
-              to="/contact"
+              to={hero[0].button2Link}
               className="px-8 py-3 rounded-full border border-gray-300 bg-white text-gray-700 font-medium hover:shadow-md transition"
               style={{ transition: "box-shadow .2s ease" }}
             >
-              Talk to Sales
+              {hero[0].button2Text}
             </Link>
           </div>
         </div>
@@ -180,18 +306,12 @@ const EcommerceService = () => {
 
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-14">
-            Core <GradientText>Features</GradientText>
+            {coreFeatures[0].title.split(" ").slice(0,1).join(" ")}{" "}
+            <GradientText> {coreFeatures[0].title.split(" ").slice(1).join(" ")}{" "}</GradientText>
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {[
-              "Custom eCommerce platform development",
-              "AI-powered product search and recommendations",
-              "Secure multi-currency payment integration",
-              "Inventory and order management",
-              "Subscription management",
-              "Mobile app integration for iOS and Android",
-            ].map((item, index) => {
+            {coreFeatures.map((item, index) => {
               const ref = useScrollFadeUp();
 
               return (
@@ -201,7 +321,9 @@ const EcommerceService = () => {
                   className="scroll-fade-up p-8 bg-gray-50/10 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                   style={{ animationDelay: `${index * 120}ms` }}
                 >
-                  <h3 className="text-xl font-semibold mb-2">{item}</h3>
+                  <h3 className="text-xl font-semibold mb-2">
+                    {item.featureText}
+                  </h3>
                 </div>
               );
             })}
@@ -235,18 +357,12 @@ const EcommerceService = () => {
 
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-14">
-            Advanced <GradientText>Modules</GradientText>
+            {modules[0].title.split(" ").slice(0,1).join(" ")}{" "}
+             <GradientText>{modules[0].title.split(" ").slice(1).join(" ")}</GradientText>
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {[
-              "Custom admin panel with role-based access",
-              "Warehouse management system (WMS)",
-              "Influencer and affiliate management",
-              "Loyalty, wallet, and rewards system",
-              "CRM and marketing automation",
-              "B2B, B2C, and multi-vendor capabilities",
-            ].map((item, index) => {
+            {modules.map((item, index) => {
               const ref = useScrollFadeUp();
 
               return (
@@ -256,7 +372,9 @@ const EcommerceService = () => {
                   className="scroll-fade-up p-8 bg-gray-50/10 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                   style={{ animationDelay: `${index * 120}ms` }}
                 >
-                  <h3 className="text-xl font-semibold mb-2">{item}</h3>
+                  <h3 className="text-xl font-semibold mb-2">
+                    {item.moduleText}
+                  </h3>
                 </div>
               );
             })}
@@ -274,23 +392,26 @@ const EcommerceService = () => {
 
         <div className="relative z-10 max-w-3xl mx-auto px-6">
           <h2 className="text-4xl sm:text-5xl font-bold mb-6 leading-snug cta-animate">
-            Built to Scale. Built for <GradientText>Your Business</GradientText>
+            {cta[0].title.split(" ").slice(0,5).join(" ")}{" "}
+             <GradientText>
+              {cta[0].title.split(" ").slice(5).join(" ")}
+              </GradientText>
           </h2>
 
           <p
             className="text-lg text-gray-600 mb-10 leading-relaxed cta-animate"
             style={{ animationDelay: "200ms" }}
           >
-            Let’s build a commerce platform that grows with your brand.
+            {cta[0].description}
           </p>
 
           <Link
-            to="/contact"
+            to={cta[0].buttonLink}
             className="px-10 py-4 text-lg font-semibold rounded-full bg-linear-to-r from-cyan-500 to-purple-600 text-white shadow-md
              hover:scale-[1.07] transition-transform hover-scale"
             style={{ animationDelay: "350ms" }}
           >
-            Start Your Project
+            {cta[0].buttonText}
           </Link>
         </div>
       </section>
