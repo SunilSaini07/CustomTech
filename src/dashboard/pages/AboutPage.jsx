@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+// import axioss from "axioss";
 import toast from "react-hot-toast";
+import axioss from "../../axiosConfig";
 
 const AboutPage = () => {
   // ================= ABOUT HERO SECTION STATE =================
@@ -16,8 +17,8 @@ const AboutPage = () => {
 
   // ================= FETCH ABOUT HERO =================
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/about/hero")
+    axioss
+      .get("/api/about/hero")
       .then((res) => {
         setAboutHero(res.data); // API returns a single object
         setAboutHeroHistory([res.data]);
@@ -44,8 +45,8 @@ const AboutPage = () => {
   // ================= SAVE =================
   const handleAboutHeroSave = async () => {
     try {
-      const res = await axios.put(
-        `http://localhost:8080/api/about/hero/${aboutHero.id}`,
+      const res = await axioss.put(
+        `/api/about/hero/${aboutHero.id}`,
         aboutHeroTemp
       );
 
@@ -87,8 +88,8 @@ const AboutPage = () => {
   // ================= UPDATE =================
   const handleAboutHeroUpdate = async () => {
     try {
-      const res = await axios.put(
-        `http://localhost:8080/api/about/hero/${aboutHero.id}`,
+      const res = await axioss.put(
+        `/api/about/hero/${aboutHero.id}`,
         aboutHero
       );
 
@@ -115,8 +116,8 @@ const AboutPage = () => {
 
   // ================= FETCH MISSION =================
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/about/mission")
+    axioss
+      .get("/api/about/mission")
       .then((res) => {
         setMission(res.data);
         setMissionHistory([res.data]);
@@ -143,8 +144,8 @@ const AboutPage = () => {
   // ================= SAVE =================
   const handleMissionSave = async () => {
     try {
-      const res = await axios.put(
-        `http://localhost:8080/api/about/mission/${mission.id}`,
+      const res = await axioss.put(
+        `/api/about/mission/${mission.id}`,
         missionTemp
       );
 
@@ -186,8 +187,8 @@ const AboutPage = () => {
   // ================= UPDATE =================
   const handleMissionUpdate = async () => {
     try {
-      const res = await axios.put(
-        `http://localhost:8080/api/about/mission/${mission.id}`,
+      const res = await axioss.put(
+        `/api/about/mission/${mission.id}`,
         mission
       );
 
@@ -214,8 +215,8 @@ const AboutPage = () => {
 
   // ================= FETCH VALUES =================
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/about/values")
+    axioss
+      .get("/api/about/values")
       .then((res) => {
         setValues(res.data);
         setValuesHistory([res.data]);
@@ -242,8 +243,8 @@ const AboutPage = () => {
   // ================= SAVE =================
   const handleValuesSave = async () => {
     try {
-      const res = await axios.put(
-        `http://localhost:8080/api/about/values/${values.id}`,
+      const res = await axioss.put(
+        `/api/about/values/${values.id}`,
         valuesTemp
       );
 
@@ -285,8 +286,8 @@ const AboutPage = () => {
   // ================= UPDATE =================
   const handleValuesUpdate = async () => {
     try {
-      const res = await axios.put(
-        `http://localhost:8080/api/about/values/${values.id}`,
+      const res = await axioss.put(
+        `/api/about/values/${values.id}`,
         values
       );
 
@@ -313,8 +314,8 @@ const AboutPage = () => {
 
   // ================= FETCH VALUE CARDS =================
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/about/cards")
+    axioss
+      .get("/api/about/cards")
       .then((res) => {
         setValueCards(res.data);
         setValueCardsHistory([res.data]);
@@ -343,8 +344,8 @@ const AboutPage = () => {
       const updatedList = [];
 
       for (const item of valueCardsTemp) {
-        const res = await axios.put(
-          `http://localhost:8080/api/about/cards/${item.id}`,
+        const res = await axioss.put(
+          `/api/about/cards/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -391,8 +392,8 @@ const AboutPage = () => {
       const updatedList = [];
 
       for (const item of valueCards) {
-        const res = await axios.put(
-          `http://localhost:8080/api/about/cards/${item.id}`,
+        const res = await axioss.put(
+          `/api/about/cards/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -421,8 +422,8 @@ const AboutPage = () => {
 
   // ================= FETCH CTA =================
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/about/cta")
+    axioss
+      .get("/api/about/cta")
       .then((res) => {
         setAboutCTA(res.data);
         setAboutCTAHistory([res.data]);
@@ -451,8 +452,8 @@ const AboutPage = () => {
       const updatedList = [];
 
       for (const item of aboutCTATemp) {
-        const res = await axios.put(
-          `http://localhost:8080/api/about/cta/${item.id}`,
+        const res = await axioss.put(
+          `/api/about/cta/${item.id}`,
           item
         );
         updatedList.push(res.data);
@@ -499,8 +500,8 @@ const AboutPage = () => {
       const updatedList = [];
 
       for (const item of aboutCTA) {
-        const res = await axios.put(
-          `http://localhost:8080/api/about/cta/${item.id}`,
+        const res = await axioss.put(
+          `/api/about/cta/${item.id}`,
           item
         );
         updatedList.push(res.data);
