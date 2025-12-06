@@ -47,10 +47,7 @@ const ContactPage = () => {
       const updatedList = [];
 
       for (const item of contactHeroTemp) {
-        const res = await axioss.put(
-          `/api/contact/hero/${item.id}`,
-          item
-        );
+        const res = await axioss.put(`/api/contact/hero/${item.id}`, item);
         updatedList.push(res.data);
       }
 
@@ -95,10 +92,7 @@ const ContactPage = () => {
       const updatedList = [];
 
       for (const item of contactHero) {
-        const res = await axioss.put(
-          `/api/contact/hero/${item.id}`,
-          item
-        );
+        const res = await axioss.put(`/api/contact/hero/${item.id}`, item);
         updatedList.push(res.data);
       }
 
@@ -155,10 +149,7 @@ const ContactPage = () => {
       const updatedList = [];
 
       for (const item of aboutSectionTemp) {
-        const res = await axioss.put(
-          `/api/contact/about/${item.id}`,
-          item
-        );
+        const res = await axioss.put(`/api/contact/about/${item.id}`, item);
         updatedList.push(res.data);
       }
 
@@ -203,10 +194,7 @@ const ContactPage = () => {
       const updatedList = [];
 
       for (const item of aboutSection) {
-        const res = await axioss.put(
-          `/api/contact/about/${item.id}`,
-          item
-        );
+        const res = await axioss.put(`/api/contact/about/${item.id}`, item);
         updatedList.push(res.data);
       }
 
@@ -263,10 +251,7 @@ const ContactPage = () => {
       const updatedList = [];
 
       for (const card of contactCardsTemp) {
-        const res = await axioss.put(
-          `/api/contact/info/${card.id}`,
-          card
-        );
+        const res = await axioss.put(`/api/contact/info/${card.id}`, card);
         updatedList.push(res.data);
       }
 
@@ -311,10 +296,7 @@ const ContactPage = () => {
       const updatedList = [];
 
       for (const card of contactCards) {
-        const res = await axioss.put(
-          `/api/contact/info/${card.id}`,
-          card
-        );
+        const res = await axioss.put(`/api/contact/info/${card.id}`, card);
         updatedList.push(res.data);
       }
 
@@ -460,163 +442,165 @@ const ContactPage = () => {
       {/* ================= ABOUT SECTION TABLE ================= */}
       <h2 className="text-2xl font-bold mt-10 mb-6">About Section</h2>
 
-      {aboutSectionLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <table className="min-w-full border border-gray-300 bg-white">
-          <thead className="bg-gray-100">
-            <tr>
-              <th className="p-3 border w-16">ID</th>
-              <th className="p-3 border w-64">Title</th>
-              <th className="p-3 border">Description 1</th>
-              <th className="p-3 border">Description 2</th>
-              <th className="p-3 border w-64">Image URL</th>
-              <th className="p-3 border w-56">Button Text</th>
-              <th className="p-3 border w-56">Button Link</th>
-              <th className="p-3 border w-52">Updated At</th>
-            </tr>
-          </thead>
+      <div className="overflow-auto">
+        {aboutSectionLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <table className="min-w-full border border-gray-300 bg-white">
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="p-3 border w-16">ID</th>
+                <th className="p-3 border w-64">Title</th>
+                <th className="p-3 border">Description 1</th>
+                <th className="p-3 border">Description 2</th>
+                <th className="p-3 border w-64">Image URL</th>
+                <th className="p-3 border w-56">Button Text</th>
+                <th className="p-3 border w-56">Button Link</th>
+                {/* <th className="p-3 border w-52">Updated At</th> */}
+              </tr>
+            </thead>
 
-          <tbody>
-            {(aboutSectionEdit ? aboutSectionTemp : aboutSection).map(
-              (item, index) => (
-                <tr key={item.id} className="border">
-                  <td className="p-3 border">{item.id}</td>
+            <tbody>
+              {(aboutSectionEdit ? aboutSectionTemp : aboutSection).map(
+                (item, index) => (
+                  <tr key={item.id} className="border">
+                    <td className="p-3 border">{item.id}</td>
 
-                  {/* Title */}
-                  <td className="p-3 border">
-                    {aboutSectionEdit ? (
-                      <input
-                        value={item.title || ""}
-                        onChange={(e) =>
-                          updateAboutSectionField(
-                            index,
-                            "title",
-                            e.target.value
-                          )
-                        }
-                        className="border p-2 w-full rounded"
-                      />
-                    ) : (
-                      item.title
-                    )}
-                  </td>
+                    {/* Title */}
+                    <td className="p-3 border">
+                      {aboutSectionEdit ? (
+                        <input
+                          value={item.title || ""}
+                          onChange={(e) =>
+                            updateAboutSectionField(
+                              index,
+                              "title",
+                              e.target.value
+                            )
+                          }
+                          className="border p-2 w-full rounded"
+                        />
+                      ) : (
+                        item.title
+                      )}
+                    </td>
 
-                  {/* Description 1 */}
-                  <td className="p-3 border">
-                    {aboutSectionEdit ? (
-                      <textarea
-                        rows={2}
-                        value={item.description1 || ""}
-                        onChange={(e) =>
-                          updateAboutSectionField(
-                            index,
-                            "description1",
-                            e.target.value
-                          )
-                        }
-                        className="border p-2 w-auto rounded"
-                      />
-                    ) : (
-                      <pre className="whitespace-pre-wrap">
-                        {item.description1}
-                      </pre>
-                    )}
-                  </td>
+                    {/* Description 1 */}
+                    <td className="p-3 border">
+                      {aboutSectionEdit ? (
+                        <textarea
+                          rows={2}
+                          value={item.description1 || ""}
+                          onChange={(e) =>
+                            updateAboutSectionField(
+                              index,
+                              "description1",
+                              e.target.value
+                            )
+                          }
+                          className="border p-2 w-auto rounded"
+                        />
+                      ) : (
+                        <pre className="whitespace-pre-wrap">
+                          {item.description1}
+                        </pre>
+                      )}
+                    </td>
 
-                  {/* Description 2 */}
-                  <td className="p-3 border">
-                    {aboutSectionEdit ? (
-                      <textarea
-                        rows={2}
-                        value={item.description2 || ""}
-                        onChange={(e) =>
-                          updateAboutSectionField(
-                            index,
-                            "description2",
-                            e.target.value
-                          )
-                        }
-                        className="border p-2 w-auto rounded"
-                      />
-                    ) : (
-                      <pre className="whitespace-pre-wrap">
-                        {item.description2}
-                      </pre>
-                    )}
-                  </td>
+                    {/* Description 2 */}
+                    <td className="p-3 border">
+                      {aboutSectionEdit ? (
+                        <textarea
+                          rows={2}
+                          value={item.description2 || ""}
+                          onChange={(e) =>
+                            updateAboutSectionField(
+                              index,
+                              "description2",
+                              e.target.value
+                            )
+                          }
+                          className="border p-2 w-auto rounded"
+                        />
+                      ) : (
+                        <pre className="whitespace-pre-wrap">
+                          {item.description2}
+                        </pre>
+                      )}
+                    </td>
 
-                  {/* Image URL */}
-                  <td className="p-3 border">
-                    {aboutSectionEdit ? (
-                      <input
-                        value={item.imageUrl || ""}
-                        onChange={(e) =>
-                          updateAboutSectionField(
-                            index,
-                            "imageUrl",
-                            e.target.value
-                          )
-                        }
-                        className="border p-2 w-full rounded"
-                      />
-                    ) : (
-                      <img
-                        src={item.imageUrl}
-                        alt="About"
-                        className="w-16 h-16 object-contain mx-auto"
-                      />
-                    )}
-                  </td>
+                    {/* Image URL */}
+                    <td className="p-3 border">
+                      {aboutSectionEdit ? (
+                        <input
+                          value={item.imageUrl || ""}
+                          onChange={(e) =>
+                            updateAboutSectionField(
+                              index,
+                              "imageUrl",
+                              e.target.value
+                            )
+                          }
+                          className="border p-2 w-full rounded"
+                        />
+                      ) : (
+                        <img
+                          src={item.imageUrl}
+                          alt="About"
+                          className="w-16 h-16 object-contain mx-auto"
+                        />
+                      )}
+                    </td>
 
-                  {/* Button Text */}
-                  <td className="p-3 border">
-                    {aboutSectionEdit ? (
-                      <input
-                        value={item.buttonText || ""}
-                        onChange={(e) =>
-                          updateAboutSectionField(
-                            index,
-                            "buttonText",
-                            e.target.value
-                          )
-                        }
-                        className="border p-2 w-full rounded"
-                      />
-                    ) : (
-                      item.buttonText
-                    )}
-                  </td>
+                    {/* Button Text */}
+                    <td className="p-3 border">
+                      {aboutSectionEdit ? (
+                        <input
+                          value={item.buttonText || ""}
+                          onChange={(e) =>
+                            updateAboutSectionField(
+                              index,
+                              "buttonText",
+                              e.target.value
+                            )
+                          }
+                          className="border p-2 w-full rounded"
+                        />
+                      ) : (
+                        item.buttonText
+                      )}
+                    </td>
 
-                  {/* Button Link */}
-                  <td className="p-3 border">
-                    {aboutSectionEdit ? (
-                      <input
-                        value={item.buttonLink || ""}
-                        onChange={(e) =>
-                          updateAboutSectionField(
-                            index,
-                            "buttonLink",
-                            e.target.value
-                          )
-                        }
-                        className="border p-2 w-full rounded"
-                      />
-                    ) : (
-                      item.buttonLink
-                    )}
-                  </td>
+                    {/* Button Link */}
+                    <td className="p-3 border">
+                      {aboutSectionEdit ? (
+                        <input
+                          value={item.buttonLink || ""}
+                          onChange={(e) =>
+                            updateAboutSectionField(
+                              index,
+                              "buttonLink",
+                              e.target.value
+                            )
+                          }
+                          className="border p-2 w-full rounded"
+                        />
+                      ) : (
+                        item.buttonLink
+                      )}
+                    </td>
 
-                  {/* Updated At */}
-                  <td className="p-3 border text-gray-600">
+                    {/* Updated At */}
+                    {/* <td className="p-3 border text-gray-600">
                     {new Date(item.updatedAt).toLocaleString()}
-                  </td>
-                </tr>
-              )
-            )}
-          </tbody>
-        </table>
-      )}
+                  </td> */}
+                  </tr>
+                )
+              )}
+            </tbody>
+          </table>
+        )}
+      </div>
 
       {/* ================= BUTTONS ================= */}
       <div className="flex gap-4 mt-5">
@@ -675,118 +659,136 @@ const ContactPage = () => {
       {/* ================= CONTACT INFO CARDS TABLE ================= */}
       <h2 className="text-2xl font-bold mt-10 mb-6">Contact Info Cards</h2>
 
-      {contactCardsLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <table className="min-w-full border border-gray-300 bg-white">
-          <thead className="bg-gray-100">
-            <tr>
-              <th className="p-3 border w-16">ID</th>
-              <th className="p-3 border w-52">Title</th>
-              <th className="p-3 border w-52">Main Title</th>
-              <th className="p-3 border">Info</th>
-              <th className="p-3 border w-40">Icon</th>
-              <th className="p-3 border w-40">Glow</th>
-              <th className="p-3 border w-52">Updated At</th>
-            </tr>
-          </thead>
+      <div className="overflow-auto">
+        {contactCardsLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <table className="min-w-full border border-gray-300 bg-white">
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="p-3 border w-16">ID</th>
+                <th className="p-3 border w-52">Title</th>
+                <th className="p-3 border w-52">Main Title</th>
+                <th className="p-3 border">Info</th>
+                <th className="p-3 border w-40">Icon</th>
+                <th className="p-3 border w-40">Glow</th>
+                {/* <th className="p-3 border w-52">Updated At</th> */}
+              </tr>
+            </thead>
 
-          <tbody>
-            {(contactCardsEdit ? contactCardsTemp : contactCards).map(
-              (card, index) => (
-                <tr key={card.id} className="border">
-                  <td className="p-3 border">{card.id}</td>
+            <tbody>
+              {(contactCardsEdit ? contactCardsTemp : contactCards).map(
+                (card, index) => (
+                  <tr key={card.id} className="border">
+                    <td className="p-3 border">{card.id}</td>
 
-                  {/* Title */}
-                  <td className="p-3 border">
-                    {contactCardsEdit ? (
-                      <input
-                        value={card.title || ""}
-                        onChange={(e) =>
-                          updateContactCardField(index, "title", e.target.value)
-                        }
-                        className="border p-2 w-full rounded"
-                      />
-                    ) : (
-                      card.title
-                    )}
-                  </td>
+                    {/* Title */}
+                    <td className="p-3 border">
+                      {contactCardsEdit ? (
+                        <input
+                          value={card.title || ""}
+                          onChange={(e) =>
+                            updateContactCardField(
+                              index,
+                              "title",
+                              e.target.value
+                            )
+                          }
+                          className="border p-2 w-full rounded"
+                        />
+                      ) : (
+                        card.title
+                      )}
+                    </td>
 
-                  {/* Main Title */}
-                  <td className="p-3 border">
-                    {contactCardsEdit ? (
-                      <input
-                        value={card.mainTitle || ""}
-                        onChange={(e) =>
-                          updateContactCardField(
-                            index,
-                            "mainTitle",
-                            e.target.value
-                          )
-                        }
-                        className="border p-2 w-full rounded"
-                      />
-                    ) : (
-                      card.mainTitle
-                    )}
-                  </td>
+                    {/* Main Title */}
+                    <td className="p-3 border">
+                      {contactCardsEdit ? (
+                        <input
+                          value={card.mainTitle || ""}
+                          onChange={(e) =>
+                            updateContactCardField(
+                              index,
+                              "mainTitle",
+                              e.target.value
+                            )
+                          }
+                          className="border p-2 w-full rounded"
+                        />
+                      ) : (
+                        card.mainTitle
+                      )}
+                    </td>
 
-                  {/* Info */}
-                  <td className="p-3 border">
-                    {contactCardsEdit ? (
-                      <textarea
-                        rows={2}
-                        value={card.info || ""}
-                        onChange={(e) =>
-                          updateContactCardField(index, "info", e.target.value)
-                        }
-                        className="border p-2 w-full rounded"
-                      />
-                    ) : (
-                      <pre className="whitespace-pre-wrap">{card.info}</pre>
-                    )}
-                  </td>
+                    {/* Info */}
+                    <td className="p-3 border">
+                      {contactCardsEdit ? (
+                        <textarea
+                          rows={2}
+                          value={card.info || ""}
+                          onChange={(e) =>
+                            updateContactCardField(
+                              index,
+                              "info",
+                              e.target.value
+                            )
+                          }
+                          className="border p-2 w-full rounded"
+                        />
+                      ) : (
+                        <pre className="whitespace-pre-wrap">{card.info}</pre>
+                      )}
+                    </td>
 
-                  {/* Icon */}
-                  <td className="p-3 border">
-                    {contactCardsEdit ? (
-                      <input
-                        value={card.icon || ""}
-                        onChange={(e) =>
-                          updateContactCardField(index, "icon", e.target.value)
-                        }
-                        className="border p-2 w-full rounded"
-                      />
-                    ) : (
-                      card.icon
-                    )}
-                  </td>
+                    {/* Icon */}
+                    <td className="p-3 border">
+                      {contactCardsEdit ? (
+                        <input
+                          value={card.icon || ""}
+                          onChange={(e) =>
+                            updateContactCardField(
+                              index,
+                              "icon",
+                              e.target.value
+                            )
+                          }
+                          className="border p-2 w-full rounded"
+                        />
+                      ) : (
+                        card.icon
+                      )}
+                    </td>
 
-                  {/* Glow */}
-                  <td className="p-3 border">
-                    {contactCardsEdit ? (
-                      <input
-                        value={card.glow || ""}
-                        onChange={(e) =>
-                          updateContactCardField(index, "glow", e.target.value)
-                        }
-                        className="border p-2 w-full rounded"
-                      />
-                    ) : (
-                      card.glow
-                    )}
-                  </td>
+                    {/* Glow */}
+                    <td className="p-3 border">
+                      {contactCardsEdit ? (
+                        <input
+                          value={card.glow || ""}
+                          onChange={(e) =>
+                            updateContactCardField(
+                              index,
+                              "glow",
+                              e.target.value
+                            )
+                          }
+                          className="border p-2 w-full rounded"
+                        />
+                      ) : (
+                        card.glow
+                      )}
+                    </td>
 
-                  {/* Updated At */}
-                  <td className="p-3 border text-gray-600">
+                    {/* Updated At */}
+                    {/* <td className="p-3 border text-gray-600">
                     {new Date(card.updatedAt).toLocaleString()}
-                  </td>
-                </tr>
-              )
-            )}
-          </tbody>
-        </table>
-      )}
+                  </td> */}
+                  </tr>
+                )
+              )}
+            </tbody>
+          </table>
+        )}
+      </div>
 
       {/* ================= BUTTONS ================= */}
       <div className="flex gap-4 mt-5">

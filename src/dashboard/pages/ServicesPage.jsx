@@ -324,6 +324,7 @@ const ServicesPage = () => {
 
   return (
     <div className="p-10">
+      <h1 className="text-2xl font-bold mt-10 mb-6">Service Section</h1>
       {/* ================= SERVICE PAGE HERO SECTION ================= */}
       <h1 className="text-2xl font-bold mt-10 mb-6"> Hero Section </h1>
 
@@ -437,6 +438,7 @@ const ServicesPage = () => {
       {/* ================= SERVICE CARDS SECTION ================= */}
       <h1 className="text-2xl font-bold mt-10 mb-6">Service Cards Section</h1>
 
+      <div className="overflow-auto">
       {scLoading ? (
         <p>Loading...</p>
       ) : (
@@ -581,6 +583,7 @@ const ServicesPage = () => {
           </tbody>
         </table>
       )}
+      </div>
 
       {/* ================= BUTTONS ================= */}
       <div className="flex gap-4 mt-5">

@@ -890,7 +890,8 @@ function HomePage() {
       {/* ================= INDUSTRIES SECTION ================= */}
       <h1 className="text-2xl font-bold mt-10 mb-6">Industries Section</h1>
 
-      <table className="min-w-full border border-gray-300 divide-y bg-white">
+      <div className="overflow-auto">
+      <table className=" min-w-full border border-gray-300 divide-y bg-white">
         <thead>
           <tr className="bg-gray-100">
             <th className="p-3 border">Main Title</th>
@@ -992,6 +993,7 @@ function HomePage() {
               ))}
         </tbody>
       </table>
+      </div>
 
       <div className="flex gap-4 mt-5">
         {!indEdit ? (

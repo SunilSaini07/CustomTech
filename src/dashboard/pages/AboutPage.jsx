@@ -651,7 +651,7 @@ const AboutPage = () => {
               <th className="p-3 border w-72">Image URL</th>
               <th className="p-3 border">Description 1</th>
               <th className="p-3 border">Description 2</th>
-              <th className="p-3 border w-52">Updated At</th>
+              {/* <th className="p-3 border w-52">Updated At</th> */}
             </tr>
           </thead>
 
@@ -756,9 +756,9 @@ const AboutPage = () => {
               </td>
 
               {/* UPDATED AT */}
-              <td className="p-3 border text-gray-600">
+              {/* <td className="p-3 border text-gray-600">
                 {new Date(mission.updatedAt).toLocaleString()}
-              </td>
+              </td> */}
             </tr>
           </tbody>
         </table>
