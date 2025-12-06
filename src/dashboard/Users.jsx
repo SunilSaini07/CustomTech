@@ -4,12 +4,12 @@ import axioss from "../axiosConfig";
 
 function Users() {
   const [users, setUsers] = useState([]);
-  const [editing, setEditing] = useState(null);
-  const [form, setForm] = useState({
-    fullname: "",
-    email: "",
-    message: "",
-  });
+  // const [editing, setEditing] = useState(null);
+  // const [form, setForm] = useState({
+  //   fullname: "",
+  //   email: "",
+  //   message: "",
+  // });
 
   const [search, setSearch] = useState("");
   const [sortField, setSortField] = useState("msgid");
@@ -48,25 +48,25 @@ function Users() {
       .catch(() => showToast("Delete failed"));
   };
 
-  const startEdit = (user) => {
-    setEditing(user.msgid);
-    setForm({
-      fullname: user.fullname,
-      email: user.email,
-      message: user.message,
-    });
-  };
+  // const startEdit = (user) => {
+  //   setEditing(user.msgid);
+  //   setForm({
+  //     fullname: user.fullname,
+  //     email: user.email,
+  //     message: user.message,
+  //   });
+  // };
 
-  const saveUpdate = () => {
-    axioss
-      .put(`${API}/${editing}`, form)
-      .then(() => {
-        setEditing(null);
-        loadUsers();
-        showToast("User updated");
-      })
-      .catch(() => showToast("Update failed"));
-  };
+  // const saveUpdate = () => {
+  //   axioss
+  //     .put(`${API}/${editing}`, form)
+  //     .then(() => {
+  //       setEditing(null);
+  //       loadUsers();
+  //       showToast("User updated");
+  //     })
+  //     .catch(() => showToast("Update failed"));
+  // };
 
   const filtered = users
     .filter(
@@ -139,12 +139,12 @@ function Users() {
               <td className="px-3 py-2 border">{user.message}</td>
 
               <td className="px-3 py-2 border space-x-3">
-                <button
+                {/* <button
                   onClick={() => startEdit(user)}
                   className="px-3 py-1 bg-blue-500 text-white rounded"
                 >
                   Edit
-                </button>
+                </button> */}
 
                 <button
                   onClick={() => deleteUser(user.msgid)}
@@ -180,7 +180,7 @@ function Users() {
         </button>
       </div>
 
-      {editing && (
+      {/* {editing && (
         <div
           style={{
             position: "fixed",
@@ -231,7 +231,7 @@ function Users() {
             </div>
           </div>
         </div>
-      )}
+      )} */}
 
       {toast && (
         <div
