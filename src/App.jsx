@@ -26,6 +26,7 @@ import SolutionsPage from "./dashboard/pages/SolutionsPage.jsx";
 import AboutPage from "./dashboard/pages/AboutPage.jsx";
 import ContactPage from "./dashboard/pages/ContactPage.jsx";
 import EcommercePage from "./dashboard/pages/EcommercePage.jsx";
+import SettingsPage from "./dashboard/pages/SettingsPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,7 @@ const router = createBrowserRouter([
               { path: "aboutus", element: <AboutPage /> },
               { path: "contact", element: <ContactPage /> },
               { path: "advanced-ecommerce", element: <EcommercePage /> },
+              { path: "settings", element: <SettingsPage /> },
             ]
           },
         ],
