@@ -71,7 +71,7 @@ function SettingsPage() {
               <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center"><User className="mr-3 text-indigo-500" /> Profile Information</h2>
               <div className="flex items-center space-x-6 mb-8">
                 <div className="relative">
-                  <img src="https://i.pravatar.cc/100?=admin" alt="Admin" className="w-24 h-24 rounded-full object-cover ring-4 ring-white/80" />
+                  <img src="https://img.freepik.com/premium-photo/3d-animation-character-cartoon_113255-10704.jpg" alt="Admin" className="w-24 h-24 rounded-full object-cover ring-4 ring-white/80" />
                   <button className="absolute bottom-0 right-0 bg-indigo-600 text-white p-1.5 rounded-full shadow-md hover:bg-indigo-700 transition">
                     <Upload size={16} />
                   </button>
